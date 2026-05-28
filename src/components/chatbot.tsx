@@ -15,7 +15,11 @@ import {
   RefreshCw,
   HelpCircle,
   ShoppingBag,
-  Info
+  Info,
+  Bird,
+  Heart,
+  Star,
+  Bone,
 } from "lucide-react";
 import { products, productWhatsappHref, site, CategoryId } from "@/lib/site-data";
 
@@ -180,7 +184,8 @@ export function Chatbot() {
   const [isTyping, setIsTyping] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [bounceAlert, setBounceAlert] = useState(false);
-  const [tooltipText, setTooltipText] = useState("Squawk! Chat with Polly 🦜");
+  const [tooltipText, setTooltipText] = useState("Squawk! Chat with Polly");
+  const [tooltipIcon, setTooltipIcon] = useState("bird");
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [widgetAvatarSrc, setWidgetAvatarSrc] = useState("/images/macaw_avatar.png");
   const [lastDiscussedProduct, setLastDiscussedProduct] = useState<typeof products[0] | null>(null);
@@ -255,39 +260,46 @@ export function Chatbot() {
 
     const chatterList = [
       {
-        text: "Squawk! Hand-tamed Blue & Gold Macaws are in stock! 🦜",
+        text: "Squawk! Hand-tamed Blue & Gold Macaws are in stock!",
         avatar: "/images/macaw_avatar.png",
-        animal: "parrot"
+        animal: "parrot",
+        icon: "bird"
       },
       {
-        text: "Woof! Looking for a healthy German Shepherd or Retriever puppy? 🐶",
+        text: "Woof! Looking for a healthy German Shepherd or Retriever puppy?",
         avatar: "/images/puppy_avatar.png",
-        animal: "puppy"
+        animal: "puppy",
+        icon: "heart"
       },
       {
-        text: "Meow! Looking for premium, grain-free food for your kitty? 🐱",
+        text: "Meow! Looking for premium, grain-free food for your kitty?",
         avatar: "/images/cat_avatar.png",
-        animal: "cat"
+        animal: "cat",
+        icon: "star"
       },
       {
-        text: "Squeak! Cute and friendly Syrian Hamsters are ready to play! 🐹",
+        text: "Squeak! Cute and friendly Syrian Hamsters are ready to play!",
         avatar: "/images/hamster_avatar.png",
-        animal: "hamster"
+        animal: "hamster",
+        icon: "sparkles"
       },
       {
-        text: "Squawk! Buy high-protein Drools Focus puppy food! 🍖",
+        text: "Squawk! Buy high-protein Drools Focus puppy food!",
         avatar: "/images/macaw_avatar.png",
-        animal: "parrot"
+        animal: "parrot",
+        icon: "bone"
       },
       {
-        text: "Woof woof! Fully vaccinated puppies ready for forever homes! 🐶",
+        text: "Woof woof! Fully vaccinated puppies ready for forever homes!",
         avatar: "/images/puppy_avatar.png",
-        animal: "puppy"
+        animal: "puppy",
+        icon: "heart"
       },
       {
-        text: "Meow! Keep your cat healthy with our vet-approved recipes! 🐱",
+        text: "Meow! Keep your cat healthy with our vet-approved recipes!",
         avatar: "/images/cat_avatar.png",
-        animal: "cat"
+        animal: "cat",
+        icon: "sparkles"
       }
     ];
 
@@ -305,6 +317,7 @@ export function Chatbot() {
     function triggerChatter() {
       const chatter = chatterList[chatterIndex];
       setTooltipText(chatter.text);
+      setTooltipIcon(chatter.icon);
       setWidgetAvatarSrc(chatter.avatar);
       setIsTooltipVisible(true);
       setBounceAlert(true);
@@ -958,14 +971,27 @@ export function Chatbot() {
         {/* Floating tooltip on hover & dynamic chatter */}
         {!isOpen && (
           <div 
-            className={`absolute right-full mr-3.5 top-1/2 -translate-y-1/2 rounded-xl bg-forest px-3.5 py-2.5 text-xs font-bold text-white shadow-xl pointer-events-none transition-all duration-500 whitespace-nowrap border border-white/5 ${
+            className={`absolute right-full mr-3.5 top-1/2 -translate-y-1/2 rounded-2xl bg-white/95 backdrop-blur-md px-4 py-3 shadow-xl pointer-events-none transition-all duration-500 whitespace-normal border border-forest/10 max-w-[180px] xs:max-w-[240px] sm:max-w-sm ${
               isTooltipVisible 
                 ? "opacity-100 translate-x-0 scale-100" 
                 : "opacity-0 translate-x-2 scale-95 group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100"
             }`}
           >
-            {tooltipText}
-            <div className="absolute left-full top-1/2 -translate-y-1/2 border-8 border-transparent border-l-forest" />
+            <div className="flex items-center gap-2.5">
+              <span className="text-[11px] sm:text-xs font-bold leading-normal text-forest">
+                {tooltipText}
+              </span>
+              {tooltipIcon && (
+                <span className="flex h-5.5 w-5.5 shrink-0 items-center justify-center rounded-full bg-forest-light text-leaf shadow-sm animate-pulse">
+                  {tooltipIcon === "bird" && <Bird className="h-3.5 w-3.5" />}
+                  {tooltipIcon === "heart" && <Heart className="h-3.5 w-3.5 text-red-500 fill-red-500" />}
+                  {tooltipIcon === "star" && <Star className="h-3.5 w-3.5 text-amber-500 fill-amber-500" />}
+                  {tooltipIcon === "sparkles" && <Sparkles className="h-3.5 w-3.5 text-yellow-500 fill-yellow-500" />}
+                  {tooltipIcon === "bone" && <Bone className="h-3.5 w-3.5 text-orange-700" />}
+                </span>
+              )}
+            </div>
+            <div className="absolute left-full top-1/2 -translate-y-1/2 border-8 border-transparent border-l-white/95" />
           </div>
         )}
       </button>
