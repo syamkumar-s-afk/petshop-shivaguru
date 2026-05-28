@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exotic Pets World Pollachi</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              DEFAULT: '#003d2b',
+              light: '#eef6f3',
+            },
+            leaf: {
+              DEFAULT: '#008a3d',
+              hover: '#007031',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-fonts">
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+<!-- BEGIN: Top Bar -->
+<div class="bg-forest text-white text-xs py-2 px-4 md:px-8">
+<div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+<div class="flex items-center gap-2">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a3 3 0 0 0-3 3v1h6V5a3 3 0 0 0-3-3Z"></path><path d="M19 8H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Z"></path><path d="M12 14v4"></path><path d="M10 16h4"></path></svg>
+        Welcome to Exotic Pets World Pollachi!
+      </div>
+<div class="flex flex-wrap items-center gap-4 sm:gap-6 text-gray-200">
+<a class="flex items-center gap-1 hover:text-white transition-colors" href="tel:+919942919000">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          +91 99429 19000
+        </a>
+<span class="hidden sm:inline">|</span>
+<div class="flex items-center gap-1">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Kannaki Street, Mahalingapuram, Pollachi
+        </div>
+<span class="hidden sm:inline">|</span>
+<div class="flex items-center gap-1">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Mon - Sun: 10:00 AM - 8:30 PM
+        </div>
+</div>
+</div>
+</div>
+<!-- END: Top Bar -->
+<!-- BEGIN: Main Header -->
+<header class="bg-white border-b border-gray-100 py-4 px-4 md:px-8 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<!-- Logo Area -->
+<a class="flex items-center gap-3" href="#">
+<div class="w-12 h-12 rounded-full border-2 border-leaf flex items-center justify-center overflow-hidden">
+<!-- Placeholder for Logo -->
+<img alt="Exotic Pets Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPzL9bM6VzFDQn3wNdtDPaCytkc0zl19T_c-tWWq4x2qwLkkgyLljVSb8l3-yMcoqchpE-gAJJeYk-Cb6fX-13osGBYOfVsaqQ9ICZHEUfFo5sLPsNT4PujGNIm5IZUS93OST5R0Nb-LdXBcRyaGTMNC8vBg8ilQukvpVTtFvkfg5_4CiWZ11NtYQJv9Wd-i1VCLs100vb44tuCiCNclfOXhPMQh9B6_YhAptpPxJiltPaxarKY1cdA6w0qQEsoES1pF0lZCVDLBc"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xl font-bold text-forest leading-tight">Exotic Pets</span>
+<span class="text-sm text-gray-500 leading-tight">World Pollachi</span>
+</div>
+</a>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-700">
+<a class="hover:text-leaf transition-colors text-black" href="#">Home</a>
+<div class="relative group cursor-pointer flex items-center gap-1 hover:text-leaf transition-colors">
+          Pets
+          <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg>
+</div>
+<div class="relative group cursor-pointer flex items-center gap-1 hover:text-leaf transition-colors">
+          Products
+          <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg>
+</div>
+<div class="relative group cursor-pointer flex items-center gap-1 hover:text-leaf transition-colors">
+          Services
+          <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m6 9 6 6 6-6"></path></svg>
+</div>
+<a class="hover:text-leaf transition-colors" href="#">Gallery</a>
+<a class="hover:text-leaf transition-colors" href="#">Contact</a>
+</nav>
+<!-- CTA Button -->
+<a class="hidden md:flex items-center gap-2 bg-leaf hover:bg-leaf-hover text-white px-5 py-2.5 rounded-full font-medium transition-colors text-sm" href="#">
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        WhatsApp Us
+      </a>
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-forest">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+</button>
+</div>
+</header>
+<!-- END: Main Header -->
+<main class="max-w-7xl mx-auto px-4 md:px-8 py-8">
+<!-- BEGIN: Hero Section -->
+<section class="flex flex-col lg:flex-row gap-8 mb-12">
+<!-- Left Content Area -->
+<div class="flex-1 flex flex-col justify-center">
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+<a class="flex items-center gap-1 hover:text-forest" href="#">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            Home
+          </a>
+<span>›</span>
+<span class="text-leaf font-medium">Available Pets &amp; Products</span>
+</nav>
+<h1 class="text-4xl md:text-5xl font-bold text-forest mb-4 leading-tight tracking-tight">Available Pets &amp; Products</h1>
+<p class="text-gray-600 mb-8 max-w-2xl">Explore our wide range of exotic pets, premium pet food, accessories and supplies.</p>
+<!-- Filter Buttons -->
+<div class="flex flex-wrap gap-3">
+<button class="bg-forest text-white px-5 py-2 rounded-full text-sm font-medium transition-colors">All Items</button>
+<button class="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors">
+<span>🦜</span> Birds
+          </button>
+<button class="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors">
+<span>🐕</span> Puppies
+          </button>
+<button class="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors">
+<span>🐠</span> Aquarium
+          </button>
+<button class="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors">
+<span>🥣</span> Pet Food
+          </button>
+<button class="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors">
+<span>🦴</span> Accessories
+          </button>
+<button class="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors">
+<span>🐹</span> Small Pets
+          </button>
+</div>
+</div>
+<!-- Right Banner Area -->
+<div class="flex-1 bg-forest-light rounded-3xl p-8 relative overflow-hidden flex flex-col justify-between min-h-[300px]">
+<div class="relative z-10 w-2/3">
+<h2 class="text-2xl md:text-3xl font-bold text-forest mb-6 leading-tight">Healthy pets, trusted guidance, quality supplies.</h2>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2 text-sm font-medium text-forest">
+<svg class="text-leaf" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+              Healthy Pets
+            </div>
+<div class="flex items-center gap-2 text-sm font-medium text-forest">
+<svg class="text-leaf" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Expert Guidance
+            </div>
+<div class="flex items-center gap-2 text-sm font-medium text-forest">
+<svg class="text-leaf" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+              Quality Products
+            </div>
+</div>
+</div>
+<!-- Banner Image -->
+<img alt="Happy Dog and Cat" class="absolute bottom-0 right-0 w-1/2 object-cover object-left-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwuG8sBZHrwu1XGxsMCDFTQVFeCLkV3WLjOQBgie0VrURdbMeTGQKAhNnYl2auKH-SPqoBEzDd3oKOI-uwY_PVVO39NhworycKE7Q-w7hIUQGi8LzjXO5i-HGvRLMOixxcLVN4MVriaqqPcWPOgjO5-Fx94C5_u9tilGat1KjcZe7COMU0MpuuOs1RDvWBUemOZZhM3PkQv9CWWuFUhCQy9stRKnPCYFHcCBbq-G9-nZ6eNT9unBBIJ4J5iRXoFposoVQt0sh39Aw" style="mask-image: linear-gradient(to left, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 80%, transparent 100%);"/>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Product Grid -->
+<section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-12">
+<!-- Item 1: Macaw -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50">
+<img alt="Blue &amp; Gold Macaw" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzTBJe6C84AG5reDBaTHQQThUTtnwH9QO3kaHkqmiaLdPQW3mXwr5p0DaMGqTSUaXoPX-eb7JnTfz3eQutyVhvigv_qr9yDtDEmdI0iELA1sp02mi9qWUPMrSFjDHg_GzIZ_LN2QwBO5OqDf2T65N8lntmMSsXEpNSSZfUpou--2TQxbhKVabkOe_tbfabLV5XcFPvht3EMB9vXMPEKY2hGQSUTbZCe7wViyot5IMQ2jyGNzXJko_wycm2HEncRKf-xUaYVqbIWgw"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Blue &amp; Gold Macaw</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Beautiful, intelligent &amp; playful macaw parrots.</p>
+<button class="w-full py-2 px-4 rounded-full border border-leaf text-leaf text-xs font-semibold flex items-center justify-center gap-2 hover:bg-leaf hover:text-white transition-colors">
+<svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Enquire Now
+          </button>
+</div>
+</div>
+<!-- Item 2: Love Birds -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50">
+<img alt="Love Birds" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh42X_PnkfebDPTbVQYaKCiGyP8DRX4b3CygceRX6DcbX-KgSh7fZYprcfM6s3_o9-O76bUIheiMJi3B_5m9tHTFNIFauSXY7iHRAC-p92nyfVewWh7HtGKsgioQYF1mMAfM1NQ5DcXlJ8jBdhFmDAgHCV9pB4Y-j9OTuy4zDQs0IRkd8i4_LNVInZpFFaLWzYJ0j9SC8Ds2Eo-CXNAv4BMvSJ7JYeBTcBrwFLkNxRfvY2DRxSJGhOvvdHnLwTr14qfkUulXIYkjw"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Love Birds</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Friendly &amp; colorful companions for your home.</p>
+<button class="w-full py-2 px-4 rounded-full border border-leaf text-leaf text-xs font-semibold flex items-center justify-center gap-2 hover:bg-leaf hover:text-white transition-colors">
+<svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Enquire Now
+          </button>
+</div>
+</div>
+<!-- Item 3: Golden Retriever Puppy -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50">
+<img alt="Golden Retriever Puppy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdkUX8osWsxI9lVmf3DwTeL4Yz8KFSBvVPmKno4rtm1ctajashYlGXK_pmq_UDrWF0xFDs9tzokPaixtDH_yT5DNVD60XJWzgW1JRrhuwiY36_FuzSw53WbbgHUHD32beTq9QcMyXQrzat37rT-8QPzBhyVRA7hE0ZfEEbBFccy6c1X-ecFhrw1gTViy8QQZ6DEV4qd1642HMnGbViNVVGT3rN3KsLW2AGNxeb6Wzd4vhrB6mddZqr4JAYCWTGDqzLxgstH7N4jqw"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Golden Retriever Puppy</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Healthy, active &amp; fully vaccinated golden retriever puppies.</p>
+<button class="w-full py-2 px-4 rounded-full border border-leaf text-leaf text-xs font-semibold flex items-center justify-center gap-2 hover:bg-leaf hover:text-white transition-colors">
+<svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Enquire Now
+          </button>
+</div>
+</div>
+<!-- Item 4: Dachshund Puppy -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50">
+<img alt="Dachshund Puppy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcXk7wgkF76sN2KBINTlSBIDhbwjOga7tnbY_FH9mQ_gbmR2pFbAX2XhrurGji4DpZD9ONqDj9nwYWGicvX6wvOvnmesoDDuCOuS7RsbXj-54xsnlzm5NbVCCdajVX2wno-OPsmWWH9aGcWPL8uQ8nZqXXzxnodA06E-Ccpcm6JRz32Tuf_2eCdNGOEuNtLt4eY1b6qCHrU1-6lvFDD9ZWaIhyp3RVEqEGAeoGynHeRkvEgB_OfEfArUDUwOw5bG1MDNAjeV5Aa6M"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Dachshund Puppy</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Playful, smart &amp; adorable sausage dog.</p>
+<button class="w-full py-2 px-4 rounded-full border border-leaf text-leaf text-xs font-semibold flex items-center justify-center gap-2 hover:bg-leaf hover:text-white transition-colors">
+<svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Enquire Now
+          </button>
+</div>
+</div>
+<!-- Item 5: Angelfish -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50">
+<img alt="Angelfish" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcYDOovI_9Xqe9hl3UbJQ4wWh8FC0SldBKpb3-U9Y5ZLF6tgu1jMWIqGjWkXUb2OffcqxVwA-J-JMXTH7M7Gj8pARf11kds544e6RiQLpy0P7lJCuDACKVmGwzHKWk01uhRBO22Su9aQKffp-2IzPul6K2O4j9gevUVRBr55bqw-1kdfRe8rdmfCHR9M4V7dPawTWX9tCvqdvRPoe5eBqH8_fcZMCkVv_dzmOe0zuhm4F6Z_hGhWUDg03fJ-99aeJJ2jE-9c4UO3s"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Angelfish</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Elegant freshwater fish for a peaceful aquarium.</p>
+<button class="w-full py-2 px-4 rounded-full border border-leaf text-leaf text-xs font-semibold flex items-center justify-center gap-2 hover:bg-leaf hover:text-white transition-colors">
+<svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Enquire Now
+          </button>
+</div>
+</div>
+<!-- Item 6: Neon Tetra -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50">
+<img alt="Neon Tetra" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_7NvHXMdgabyPsi-fqIggC4vnuwBTPx32TpZWJH09nDhnVeV5jUUUZZmFCKwKMzUui9gPfe9xvQtRiE-W2tharZa7hBmHu3X7ZTMD82blzIynryFrxToUGgPcDbrAdbVb3dGWpT8YIaadtqnt_jMN1BC3CRYPC1vuQcuXsRlTWD5PFw0GU4ro1QUGsql8nH322k1TZgQ05wmfkkG0o_xaribTxVy_9O20zj5NBuym_aSR2DETaPaw1NJ-JpD9KiqOHcaj5a5Cb44"/>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Neon Tetra</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Colorful schooling fish, perfect for community tanks.</p>
+<button class="w-full py-2 px-4 rounded-full border border-leaf text-leaf text-xs font-semibold flex items-center justify-center gap-2 hover:bg-leaf hover:text-white transition-colors">
+<svg fill="none" height="12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Enquire Now
+          </button>
+</div>
+</div>
+<!-- Item 7: Premium Dog Food -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-orange-50/50 p-6 flex items-center justify-center">
+<img alt="Premium Dog Food" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAj7u9On903iUak_mNy8tHEXWQmjJ0Gc6FtrHPjiMtFhcLSuVp0biixpU5FDI6PCDMbt-mpNtkIXZ4e-WM-VEzDyxl_eqg4IbLsZqXqrYt6SvErt5UlvPUZF7OqJlgrfyPpQ2Jzmly6xEApWUak6siS3vLcwBuS2GN4Fq0ixhVMLt4HBQAXHcsidcc_CIeiUZwENGJMstIKPV-Ng6GBU0wKpBCUqjAMqc9KyBOH6ZYvfrL7phL971XnjhCaExMc0ABKqQsqrqfKio" style="mix-blend-mode: multiply;"/>
+</div>
+<div class="p-4 flex-1 flex flex-col border-t border-gray-50">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Premium Dog Food</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">High-quality nutrition for a healthy &amp; active life.</p>
+<button class="w-full py-2 px-4 rounded-full border border-gray-300 text-gray-700 text-xs font-semibold flex items-center justify-center hover:bg-gray-50 transition-colors">
+            View Details
+          </button>
+</div>
+</div>
+<!-- Item 8: Premium Cat Food -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-blue-50/50 p-6 flex items-center justify-center">
+<img alt="Premium Cat Food" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu4GgAGPZPkOjNcUIcge5WT6sWervQJjfA4EkQw5DzT2APsoKm2MzaevxEC_CFdixX2-cu4oEXQXOfO_lcPq_E68A0CMcFD_WeWvR-eRd2D69rkZSYW6hrshVeT-S1rOh3Gyxy2nrCUvgWJV_tD2WsUna12NWCsZfuuRu1b6U2O0_iAJ6YuKHKYbGhaDoInBvDmg9QWY-U2_eCR4RjIUq14s9cjjZ5nJ60KUdJ8p4BeUD-BEeP4yVT1H_AMqD-fr_fQz8M5OXAOQY" style="mix-blend-mode: multiply;"/>
+</div>
+<div class="p-4 flex-1 flex flex-col border-t border-gray-50">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Premium Cat Food</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Complete &amp; balanced food for happy cats.</p>
+<button class="w-full py-2 px-4 rounded-full border border-gray-300 text-gray-700 text-xs font-semibold flex items-center justify-center hover:bg-gray-50 transition-colors">
+            View Details
+          </button>
+</div>
+</div>
+<!-- Item 9: Dog Collar -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50/50 p-6 flex items-center justify-center">
+<img alt="Dog Collar" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLrXMDzaIJ8ZUu3J3rQ7IgC4anFxZRlLs6XcACFYrhDYuPOG--h6CiqoberpWakBgciRWOJBJ9xt0Zx1mEA-VrDlpBuA8KfxWggBuzzT1ywiMSvJ-XNHewIJk74hYxMy1IOCQkczwPYWznPwio8b0LYc3KByOlTB-2K06pmqd5i_5Nda8GAb1s8DNHu2Bu1mw94vZ_d9yFRqRMw9HnqYE9SACBogU-OwbEgqYxw8kxJxtAxmZcmv8hEslYQPDPYkQhnF6bZN-Vm9w" style="mix-blend-mode: multiply;"/>
+</div>
+<div class="p-4 flex-1 flex flex-col border-t border-gray-50">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Dog Collar</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Durable, comfortable &amp; stylish collars for your pets.</p>
+<button class="w-full py-2 px-4 rounded-full border border-gray-300 text-gray-700 text-xs font-semibold flex items-center justify-center hover:bg-gray-50 transition-colors">
+            View Details
+          </button>
+</div>
+</div>
+<!-- Item 10: Rope Toy -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50/50 p-6 flex items-center justify-center">
+<img alt="Rope Toy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmUWW38cAGIBwsoLABcSzR_e3ZgkE-siG6UQE39mfmOA3AsMWd6EmC30FWuCKaGBJ8mc5Ucn0w7mPPjiNkcaqEqMkNF81nJ1FmqdYgJhzg-W2X2W3j5LnsE8LvrWuFYMmH7z14pgsjpO2UpaB4wWKeAxuMc-tc4iKRrSnuAPNYeVvzKXUatXW8rQ1aeb4S4CTgLByAMngIltuNNyQ-KHiSnfdC15U600zfO4s6mjctQhzujCkQsquiBjEjVjkackHGhsluqsU_P-k" style="mix-blend-mode: multiply;"/>
+</div>
+<div class="p-4 flex-1 flex flex-col border-t border-gray-50">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Rope Toy</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Strong &amp; safe toys for hours of fun.</p>
+<button class="w-full py-2 px-4 rounded-full border border-gray-300 text-gray-700 text-xs font-semibold flex items-center justify-center hover:bg-gray-50 transition-colors">
+            View Details
+          </button>
+</div>
+</div>
+<!-- Item 11: Bird Play Stand -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-gray-50/50 p-6 flex items-center justify-center">
+<img alt="Bird Play Stand" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_qOBnqNZh1HlJ4LL277K7iccqkGADm455KT4Ljr4xo-PuUnwy2u7AMpaWFChorfej1AbTyI4qi1SctSavmr_j_a84jh_94vqJdg1mG14k_JIvKsfVjuIlwDhhZyrFz1qxJ4fypn9sc8KWPXazeAjGUpepYkYGwFsIhH55Rmy21rj4HSx-zcNaydDJ0uDvR8kfhEut-GvyaBZpH3BP4rD4CLpL6jBYpMTxIRSTZbLVx9GnArID0Y7cK4Bt8kQPh765kPNw96DVHxo" style="mix-blend-mode: multiply;"/>
+</div>
+<div class="p-4 flex-1 flex flex-col border-t border-gray-50">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Bird Play Stand</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Interactive play stand for birds to stay active.</p>
+<button class="w-full py-2 px-4 rounded-full border border-gray-300 text-gray-700 text-xs font-semibold flex items-center justify-center hover:bg-gray-50 transition-colors">
+            View Details
+          </button>
+</div>
+</div>
+<!-- Item 12: Syrian Hamster -->
+<div class="bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col hover:shadow-lg transition-shadow group">
+<div class="aspect-[4/3] overflow-hidden bg-orange-50/30 p-2 flex items-center justify-center">
+<img alt="Syrian Hamster" class="max-w-full max-h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBulr0k2geVzn5tUgIww_uvVnHU23lehvJpEjW25_cibqe1mgm9NuH-l6Slp0SxdQ4huCxtnMAJlnnkRqMsfDoSFsuoKgpRoRsWqbrW7SpJVab-Bbdg4ea4UNhoIB8C9nDxgW9rHazcJMlVQo7s9HRGcQQ3f3nWFHkJEeqX2N3QOJnWvDff5znAApErh8uZcMRjxi2Yh0SOzQZ6Ph4hdpvm0sejqMY522A_2TnPbNoS7r4bdSxM2tWHPPuB8TMba5nuJ77goQPnlcE"/>
+</div>
+<div class="p-4 flex-1 flex flex-col border-t border-gray-50">
+<h3 class="font-bold text-gray-900 text-sm mb-1">Syrian Hamster</h3>
+<p class="text-xs text-gray-500 mb-4 flex-1 line-clamp-2">Cute, friendly &amp; easy to care for small pets.</p>
+<button class="w-full py-2 px-4 rounded-full border border-gray-300 text-gray-700 text-xs font-semibold flex items-center justify-center hover:bg-gray-50 transition-colors">
+            View Details
+          </button>
+</div>
+</div>
+</section>
+<!-- END: Product Grid -->
+<!-- BEGIN: CTA Banner -->
+<section class="bg-forest-light rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-4 md:gap-6">
+<div class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center flex-shrink-0">
+<svg class="text-leaf w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</div>
+<div>
+<h3 class="text-xl md:text-2xl font-bold text-forest mb-1">Need Help Choosing the Right Pet or Product?</h3>
+<p class="text-gray-600 text-sm">Our experts are here to guide you with personalized recommendations.</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-4 shrink-0 border-t md:border-t-0 md:border-l border-gray-200/60 pt-4 md:pt-0 md:pl-8">
+<div class="text-center sm:text-left">
+<p class="text-sm text-gray-500 mb-1">Chat with us on WhatsApp</p>
+<p class="text-xl font-bold text-forest">+91 99429 19000</p>
+</div>
+<a class="bg-forest hover:bg-forest/90 text-white px-6 py-3 rounded-full font-medium transition-colors flex items-center gap-2" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          WhatsApp Us
+        </a>
+</div>
+</section>
+<!-- END: CTA Banner -->
+</main>
+<!-- BEGIN: Footer -->
+<footer class="bg-forest text-white pt-16 pb-8 px-4 md:px-8 border-t-[6px] border-leaf">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+<!-- Col 1: Brand -->
+<div class="lg:col-span-1">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full border-2 border-leaf flex items-center justify-center overflow-hidden bg-white">
+<img alt="Exotic Pets Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiTgpry6n9uFx9g8eeIPp5Qc8maJEWmwiA-whSeydYwxz4HdUG2NOd9TNfyC0ZzH13fMTrqNKvYx2-YqShLuhCsPG82K3nEbI4YgzkiKwvn4mjQX-9rC1yFiHy-SQ2T75hKY8-8F63Co7uQ3L8jZuyr-nVoGlePKZJX3y00toWG0BGYvMr9E6GKGJghrzlHZNLnGAJ0fS2IGuyJUrBS01J1LxQ5pGPuo6mw5jLv6n8dsyGj2WoOlvmKYfzEtdUgitEQ2YJ9eUdM14"/>
+</div>
+<div class="flex flex-col">
+<span class="text-lg font-bold leading-tight">Exotic Pets</span>
+<span class="text-xs text-gray-300 leading-tight">World Pollachi</span>
+</div>
+</div>
+<p class="text-sm text-gray-300 mb-6 leading-relaxed">
+            Your one-stop destination for exotic pets, food, accessories &amp; expert care in Pollachi.
+          </p>
+<div class="flex gap-3">
+<a class="w-8 h-8 rounded-full border border-gray-500 flex items-center justify-center hover:bg-leaf hover:border-leaf transition-colors text-gray-300 hover:text-white" href="#">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+</a>
+<a class="w-8 h-8 rounded-full border border-gray-500 flex items-center justify-center hover:bg-leaf hover:border-leaf transition-colors text-gray-300 hover:text-white" href="#">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+</a>
+<a class="w-8 h-8 rounded-full border border-gray-500 flex items-center justify-center hover:bg-leaf hover:border-leaf transition-colors text-gray-300 hover:text-white" href="#">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+</a>
+<a class="w-8 h-8 rounded-full border border-gray-500 flex items-center justify-center hover:bg-leaf hover:border-leaf transition-colors text-gray-300 hover:text-white" href="#">
+<svg fill="currentColor" height="14" stroke="none" viewbox="0 0 24 24" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</a>
+</div>
+</div>
+<!-- Col 2: Quick Links -->
+<div>
+<h4 class="font-bold text-white mb-4">Quick Links</h4>
+<ul class="flex flex-col gap-2 text-sm text-gray-300">
+<li><a class="hover:text-leaf transition-colors" href="#">Home</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Pets</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Products</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Services</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Gallery</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<!-- Col 3: Our Pets -->
+<div>
+<h4 class="font-bold text-white mb-4">Our Pets</h4>
+<ul class="flex flex-col gap-2 text-sm text-gray-300">
+<li><a class="hover:text-leaf transition-colors" href="#">Birds</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Puppies</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Aquarium</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Small Pets</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Reptiles</a></li>
+</ul>
+</div>
+<!-- Col 4: Products & Services -->
+<div>
+<h4 class="font-bold text-white mb-4">Products</h4>
+<ul class="flex flex-col gap-2 text-sm text-gray-300 mb-6">
+<li><a class="hover:text-leaf transition-colors" href="#">Pet Food</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Accessories</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Toys &amp; Games</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Grooming</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Tanks &amp; Aquariums</a></li>
+</ul>
+<h4 class="font-bold text-white mb-4">Services</h4>
+<ul class="flex flex-col gap-2 text-sm text-gray-300">
+<li><a class="hover:text-leaf transition-colors" href="#">Pet Consultation</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Grooming</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Pet Care Advice</a></li>
+<li><a class="hover:text-leaf transition-colors" href="#">Tank Maintenance</a></li>
+</ul>
+</div>
+<!-- Col 5: Contact Info -->
+<div>
+<h4 class="font-bold text-white mb-4">Contact Info</h4>
+<ul class="flex flex-col gap-4 text-sm text-gray-300">
+<li class="flex gap-3">
+<svg class="text-leaf shrink-0 mt-0.5" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<div>
+<a class="hover:text-white transition-colors" href="tel:+919942919000">+91 99429 19000</a>
+</div>
+</li>
+<li class="flex gap-3">
+<svg class="text-leaf shrink-0 mt-0.5" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span>Kannaki Street,<br/>Mahalingapuram, Pollachi</span>
+</li>
+<li class="flex gap-3">
+<svg class="text-leaf shrink-0 mt-0.5" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+<span>Mon - Sun: 10:00 AM - 8:30 PM</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="pt-6 border-t border-gray-700/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+<p>© 2025 Exotic Pets World Pollachi. All rights reserved.</p>
+<p class="flex items-center gap-1">
+          Made with <span class="text-red-500">♥</span> for pets and their people.
+        </p>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>
