@@ -971,7 +971,7 @@ export function Chatbot() {
         {/* Floating tooltip on hover & dynamic chatter */}
         {!isOpen && (
           <div 
-            className={`absolute right-full mr-3.5 top-1/2 -translate-y-1/2 rounded-2xl bg-white/95 backdrop-blur-md px-4 py-3 shadow-xl pointer-events-none transition-all duration-500 whitespace-normal border border-forest/10 max-w-[180px] xs:max-w-[240px] sm:max-w-sm ${
+            className={`absolute right-full mr-3.5 top-1/2 -translate-y-1/2 rounded-2xl bg-white/95 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 shadow-xl pointer-events-none transition-all duration-500 border border-forest/10 w-[190px] xs:w-[230px] sm:w-max sm:max-w-sm whitespace-normal sm:whitespace-nowrap ${
               isTooltipVisible 
                 ? "opacity-100 translate-x-0 scale-100" 
                 : "opacity-0 translate-x-2 scale-95 group-hover:opacity-100 group-hover:translate-x-0 group-hover:scale-100"
