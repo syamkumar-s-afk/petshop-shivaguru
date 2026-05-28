@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { productWhatsappHref, type Product } from "@/lib/site-data";
 import { ProductCard } from "@/components/product-card";
+import { addToCart } from "@/lib/cart-store";
 
 type ProductDetailContentProps = {
   product: Product;
@@ -265,6 +266,7 @@ function productCarouselImages(product: Product) {
 
 export function ProductDetailContent({ product, relatedProducts }: ProductDetailContentProps) {
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isAdded, setIsAdded] = useState(false);
   const qualityBadges = productQualityBadges(product);
   const careProfile = productCareProfile(product);
 
@@ -428,22 +430,32 @@ export function ProductDetailContent({ product, relatedProducts }: ProductDetail
 
           {/* Action Buttons */}
           <div className="mt-4 flex flex-row gap-2 md:mt-6 md:gap-3">
-            <a
-              className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-leaf px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-leaf-hover md:px-6 md:py-3.5 md:text-sm md:gap-2"
-              href={productWhatsappHref(product.name)}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-leaf px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-leaf-hover md:px-6 md:py-3.5 md:text-sm md:gap-2 cursor-pointer active:scale-95 transition-transform"
+              onClick={() => {
+                addToCart(product);
+                window.location.href = "/cart";
+              }}
             >
               <ShoppingCart className="h-4 w-4" />
-              Buy Now via WhatsApp
-            </a>
-            <a
-              className="flex flex-1 items-center justify-center gap-1.5 rounded-full border-2 border-leaf px-4 py-2.5 text-xs font-semibold text-leaf transition-colors hover:bg-leaf hover:text-white md:px-6 md:py-3.5 md:text-sm md:gap-2"
-              href={`tel:+919942919000`}
+              Buy Now
+            </button>
+            <button
+              className={`flex flex-1 items-center justify-center gap-1.5 rounded-full border-2 px-4 py-2.5 text-xs font-semibold md:px-6 md:py-3.5 md:text-sm md:gap-2 cursor-pointer active:scale-95 transition-all ${
+                isAdded
+                  ? "border-green-600 bg-green-50 text-green-600 scale-102"
+                  : "border-leaf text-leaf hover:bg-leaf hover:text-white"
+              }`}
+              onClick={() => {
+                addToCart(product);
+                setIsAdded(true);
+                setTimeout(() => setIsAdded(false), 1500);
+              }}
+              disabled={isAdded}
             >
-              <Phone className="h-4 w-4" />
-              Call to Enquire
-            </a>
+              <ShoppingCart className="h-4 w-4" />
+              {isAdded ? "Added!" : "Add to Cart"}
+            </button>
           </div>
 
           {/* Trust badges */}

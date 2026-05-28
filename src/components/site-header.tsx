@@ -12,10 +12,12 @@ import {
   Menu,
   Phone,
   Search,
+  ShoppingCart,
   X,
 } from "lucide-react";
 import { site, navItems, products, type Product } from "@/lib/site-data";
 import { AnimatedLogo } from "@/components/logo";
+import { getCart, CART_UPDATED_EVENT } from "@/lib/cart-store";
 
 const petsDropdownItems = [
   { label: "Birds", id: "birds" },
@@ -45,6 +47,22 @@ export function SiteHeader() {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState<Product[]>([]);
   const [showTour, setShowTour] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const syncCart = () => {
+      const cart = getCart();
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      setCartCount(count);
+    };
+
+    syncCart();
+
+    window.addEventListener(CART_UPDATED_EVENT, syncCart);
+    return () => {
+      window.removeEventListener(CART_UPDATED_EVENT, syncCart);
+    };
+  }, []);
 
   const handleCategorySelect = (categoryId: string) => {
     const event = new CustomEvent("select-category", { detail: categoryId });
@@ -384,6 +402,20 @@ export function SiteHeader() {
                   <span className="lg:hidden">Chat</span>
                 </a>
 
+                {/* Desktop Cart Button */}
+                <button
+                  onClick={() => { window.location.href = "/cart"; }}
+                  className="hidden md:flex relative items-center justify-center p-2.5 rounded-full border border-gray-100 bg-white shadow-sm text-forest hover:border-leaf/30 hover:bg-forest-light hover:text-leaf transition-all duration-200 active:scale-95 cursor-pointer"
+                  aria-label="Shopping Cart"
+                >
+                  <ShoppingCart className="h-5 w-5 transition-transform duration-200 hover:scale-110" />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white ring-2 ring-white animate-pulse">
+                      {cartCount}
+                    </span>
+                  )}
+                </button>
+
                 {/* Mobile Menu Icons */}
                 <div className="flex items-center gap-2 md:hidden relative">
                   <button
@@ -396,6 +428,20 @@ export function SiteHeader() {
                     type="button"
                   >
                     <Search className="h-6 w-6" />
+                  </button>
+
+                  {/* Mobile Cart Button */}
+                  <button
+                    onClick={() => { window.location.href = "/cart"; }}
+                    className="relative items-center justify-center p-2 text-forest rounded-full hover:bg-forest-light transition-all duration-200 active:scale-95 cursor-pointer"
+                    aria-label="Shopping Cart"
+                  >
+                    <ShoppingCart className="h-6 w-6 transition-transform duration-200 hover:scale-110" />
+                    {cartCount > 0 && (
+                      <span className="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white ring-1 ring-white">
+                        {cartCount}
+                      </span>
+                    )}
                   </button>
 
                   {showTour && (

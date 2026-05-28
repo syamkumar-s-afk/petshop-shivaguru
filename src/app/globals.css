@@ -117,3 +117,77 @@ button {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Parrot Chatbot Animations */
+@keyframes parrot-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-parrot-float {
+  animation: parrot-float 4s ease-in-out infinite;
+}
+
+@keyframes parrot-blink {
+  0%, 90%, 100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+.animate-parrot-blink {
+  transform-origin: center;
+  animation: parrot-blink 4s linear infinite;
+}
+
+@keyframes beak-talk {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(3deg) translateY(0.5px);
+  }
+  50% {
+    transform: rotate(0deg) translateY(0);
+  }
+  75% {
+    transform: rotate(2deg) translateY(0.3px);
+  }
+}
+
+.animate-beak-talk {
+  transform-origin: 32px 32px;
+  animation: beak-talk 0.25s ease-in-out infinite;
+}
+
+@keyframes chirp-shake {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  15%, 45%, 75% { transform: scale(1.08) rotate(-4deg); }
+  30%, 60%, 90% { transform: scale(1.08) rotate(4deg); }
+}
+
+.animate-chirp-shake {
+  animation: chirp-shake 0.7s ease-in-out;
+}
+
+/* Chat Custom Scrollbar styling for a premium feel */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 61, 43, 0.15); /* forest green with opacity */
+  border-radius: 99px;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 61, 43, 0.3);
+}
+
