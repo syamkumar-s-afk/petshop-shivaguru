@@ -287,7 +287,160 @@ export const products: Product[] = [
     conditions: [
       "Keep cage clean in a well-ventilated draft-free area",
       "Diet: millet, bird seeds, fresh greens, and fresh water",
-      "Provide mirrors and climbing perches"
+    ]
+  },
+  {
+    id: "cockatiel",
+    name: "Cockatiel",
+    description: "Friendly and vocal small parrot with distinctive crest.",
+    category: "birds",
+    image: "/images/products/birds/cockatiel/image-1.png",
+    action: "enquire",
+    price: 3500,
+    age: "Baby",
+    createdAt: "2026-05-29T10:00:00Z",
+    galleryImages: ["/images/products/birds/cockatiel/image-1.png"],
+    about: "Cockatiels are incredibly popular pet birds due to their sweet nature and ability to whistle melodies. Their signature crest feathers indicate their mood.",
+    keyFeatures: [
+      "Excellent beginner-friendly pet bird",
+      "Can learn to whistle tunes and mimic sounds",
+      "Affectionate and enjoys human interaction"
+    ],
+    conditions: [
+      "Provide a varied diet of seeds, pellets, and fresh vegetables",
+      "Requires daily out-of-cage interaction"
+    ]
+  },
+  {
+    id: "sun-conure",
+    name: "Sun Conure",
+    description: "Vibrantly colored, playful, and energetic parrot.",
+    category: "birds",
+    image: "/images/products/birds/sun-conure/image-1.png",
+    action: "enquire",
+    price: 18000,
+    age: "Baby",
+    createdAt: "2026-05-29T10:10:00Z",
+    galleryImages: ["/images/products/birds/sun-conure/image-1.png"],
+    about: "Sun Conures are stunningly beautiful with bright yellow, orange, and green plumage. They are highly active, playful, and form strong bonds with their owners.",
+    keyFeatures: [
+      "Stunning vibrant plumage",
+      "Highly playful, clownish personality",
+      "Affectionate and intelligent"
+    ],
+    conditions: [
+      "Can be quite loud, so better suited for houses than apartments",
+      "Needs plenty of chew toys and stimulation"
+    ]
+  },
+  {
+    id: "indian-ringneck",
+    name: "Indian Ringneck Parakeet",
+    description: "Elegant and highly intelligent talking parakeet.",
+    category: "birds",
+    image: "/images/products/birds/indian-ringneck/image-1.png",
+    action: "enquire",
+    price: 4500,
+    age: "Baby",
+    createdAt: "2026-05-29T10:20:00Z",
+    galleryImages: ["/images/products/birds/indian-ringneck/image-1.png"],
+    about: "Known for their striking appearance and excellent talking ability. Indian Ringnecks are very smart and can develop an impressive vocabulary when trained.",
+    keyFeatures: [
+      "Excellent mimicry and talking capabilities",
+      "Beautiful sleek appearance with distinctive neck ring",
+      "Highly intelligent and trainable"
+    ],
+    conditions: [
+      "Requires consistent daily handling to remain tame",
+      "Needs a spacious cage for their long tail feathers"
+    ]
+  },
+  {
+    id: "budgie",
+    name: "Budgerigar (Budgie)",
+    description: "Small, colorful, and cheerful parakeet companion.",
+    category: "birds",
+    image: "/images/products/birds/budgie/image-1.png",
+    action: "enquire",
+    price: 800,
+    age: "Baby",
+    createdAt: "2026-05-29T10:30:00Z",
+    galleryImages: ["/images/products/birds/budgie/image-1.png"],
+    about: "Budgies are the most popular pet bird in the world. They are small, inexpensive, easily tamed if acquired young, and surprisingly good talkers.",
+    keyFeatures: [
+      "Perfect for first-time bird owners and children",
+      "Active, cheerful, and relatively quiet",
+      "Available in a wide variety of stunning color mutations"
+    ],
+    conditions: [
+      "Best kept in pairs if you work long hours",
+      "Ensure cage bars are appropriately spaced (1/2 inch)"
+    ]
+  },
+  {
+    id: "african-lovebird",
+    name: "African Lovebird",
+    description: "Vibrant, active, and deeply affectionate small parrot.",
+    category: "birds",
+    image: "/images/products/birds/african-lovebird/image-1.png",
+    action: "enquire",
+    price: 3000,
+    age: "Baby",
+    createdAt: "2026-05-29T10:40:00Z",
+    galleryImages: ["/images/products/birds/african-lovebird/image-1.png"],
+    about: "African Lovebirds are famous for their strong monogamous bonds. They are packed with personality, highly energetic, and incredibly colorful.",
+    keyFeatures: [
+      "Intense bright coloration",
+      "Deeply affectionate when hand-raised",
+      "Highly active and entertaining to watch"
+    ],
+    conditions: [
+      "Need plenty of toys to prevent boredom",
+      "Can be territorial, handle with care"
+    ]
+  },
+  {
+    id: "cockatoo",
+    name: "Cockatoo",
+    description: "Extremely affectionate, large, and intelligent parrot.",
+    category: "birds",
+    image: "/images/products/birds/cockatoo/image-1.png",
+    action: "enquire",
+    price: 85000,
+    age: "Baby",
+    createdAt: "2026-05-29T10:50:00Z",
+    galleryImages: ["/images/products/birds/cockatoo/image-1.png"],
+    about: "Cockatoos are the 'cuddle bugs' of the parrot world. They demand a lot of attention but reward their owners with unparalleled affection and loyalty.",
+    keyFeatures: [
+      "Incredibly affectionate and bond strongly with owners",
+      "Highly intelligent problem solvers",
+      "Expressive crest feathers"
+    ],
+    conditions: [
+      "Requires a significant daily time commitment",
+      "Needs a very large, heavy-duty metal enclosure"
+    ]
+  },
+  {
+    id: "green-cheeked-parakeet",
+    name: "Green-Cheeked Conure",
+    description: "Quiet, playful, and affectionate small conure.",
+    category: "birds",
+    image: "/images/products/birds/green-cheeked-conure/image-1.png",
+    action: "enquire",
+    price: 12000,
+    age: "Baby",
+    createdAt: "2026-05-29T11:00:00Z",
+    galleryImages: ["/images/products/birds/green-cheeked-conure/image-1.png"],
+    about: "Green-cheeked conures pack all the personality of a large parrot into a small, apartment-friendly package. They are goofy, cuddly, and much quieter than other conures.",
+    keyFeatures: [
+      "Quieter than most other conure species",
+      "Playful and clown-like behavior",
+      "Enjoys physical affection and cuddling"
+    ],
+    conditions: [
+      "Provide regular bathing opportunities",
+      "Needs mental stimulation through foraging toys"
     ]
   },
   {
