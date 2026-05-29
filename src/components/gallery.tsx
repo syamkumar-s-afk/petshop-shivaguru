@@ -53,16 +53,12 @@ type GalleryRowProps = {
 
 function GalleryRow({ images, direction = 1 }: GalleryRowProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-  const resumeAt = useRef(0);
-  const startX = useRef(0);
-  const startScroll = useRef(0);
+  const isUserInteracting = useRef(false);
+  const resumeTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const scroller = scrollerRef.current;
-    if (!scroller) {
-      return;
-    }
+    if (!scroller) return;
 
     let frame = 0;
     let lastTime = performance.now();
@@ -76,14 +72,13 @@ function GalleryRow({ images, direction = 1 }: GalleryRowProps) {
       const delta = Math.min(time - lastTime, 32);
       lastTime = time;
 
-      if (!isDragging.current && time > resumeAt.current) {
+      if (!isUserInteracting.current) {
         const loopPoint = scroller.scrollWidth / 2;
         scroller.scrollLeft += direction * delta * speed;
 
         if (direction > 0 && scroller.scrollLeft >= loopPoint) {
           scroller.scrollLeft -= loopPoint;
         }
-
         if (direction < 0 && scroller.scrollLeft <= 0) {
           scroller.scrollLeft += loopPoint;
         }
@@ -93,43 +88,101 @@ function GalleryRow({ images, direction = 1 }: GalleryRowProps) {
     };
 
     frame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frame);
+    return () => {
+      cancelAnimationFrame(frame);
+      if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+    };
   }, [direction]);
 
-  const stopDragging = () => {
-    isDragging.current = false;
-    resumeAt.current = performance.now() + 900;
+  // Helper to pause automatic scrolling when user touches/drags
+  const startInteraction = () => {
+    isUserInteracting.current = true;
+    if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+  };
+
+  // Helper to resume automatic scrolling after user stops interacting
+  const stopInteraction = () => {
+    if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+    resumeTimeout.current = setTimeout(() => {
+      isUserInteracting.current = false;
+    }, 1500); // 1.5 seconds delay before resuming automatic scroll
+  };
+
+  // Native Scroll handler for boundary looping (essential for manual swipe inertia looping)
+  const handleScroll = () => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    const loopPoint = scroller.scrollWidth / 2;
+
+    if (direction > 0 && scroller.scrollLeft >= loopPoint) {
+      scroller.scrollLeft -= loopPoint;
+    } else if (direction < 0 && scroller.scrollLeft <= 0) {
+      scroller.scrollLeft += loopPoint;
+    }
+  };
+
+  // Dragging logic for Desktop (since desktop has no native swipe)
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const startScroll = useRef(0);
+
+  const handlePointerDown = (event: React.PointerEvent) => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+    
+    // Only drag on desktop/mouse (touch is handled natively by touch events)
+    if (event.pointerType === "touch") return; 
+
+    isDragging.current = true;
+    startInteraction();
+    startX.current = event.clientX;
+    startScroll.current = scroller.scrollLeft;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent) => {
+    const scroller = scrollerRef.current;
+    if (!scroller || !isDragging.current) return;
+
+    scroller.scrollLeft = startScroll.current - (event.clientX - startX.current);
+  };
+
+  const handlePointerUp = (event: React.PointerEvent) => {
+    if (isDragging.current) {
+      isDragging.current = false;
+      stopInteraction();
+    }
   };
 
   return (
     <div
       aria-label="Draggable pet gallery row"
-      className="cursor-grab overflow-x-auto active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
-      onPointerCancel={stopDragging}
-      onPointerDown={(event) => {
-        const scroller = scrollerRef.current;
-        if (!scroller) {
-          return;
+      className="cursor-grab overflow-x-auto active:cursor-grabbing [&::-webkit-scrollbar]:hidden select-none"
+      onScroll={handleScroll}
+      
+      // Desktop Pointer Dragging
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={() => {
+        if (isDragging.current) {
+          isDragging.current = false;
+          stopInteraction();
         }
-
-        isDragging.current = true;
-        startX.current = event.clientX;
-        startScroll.current = scroller.scrollLeft;
-        event.currentTarget.setPointerCapture(event.pointerId);
       }}
-      onPointerLeave={stopDragging}
-      onPointerMove={(event) => {
-        const scroller = scrollerRef.current;
-        if (!scroller || !isDragging.current) {
-          return;
-        }
 
-        scroller.scrollLeft = startScroll.current - (event.clientX - startX.current);
-      }}
-      onPointerUp={stopDragging}
+      // Mobile Native Touch events (seamlessly pauses JS scroll during swipe)
+      onTouchStart={startInteraction}
+      onTouchEnd={stopInteraction}
+      onTouchCancel={stopInteraction}
+      
       ref={scrollerRef}
       role="list"
-      style={{ scrollbarWidth: "none", touchAction: "pan-y" }}
+      style={{ 
+        scrollbarWidth: "none", 
+        WebkitOverflowScrolling: "touch", // Smooth iOS scrolling
+        touchAction: "pan-x" // Enable smooth horizontal swipes natively on iOS
+      }}
     >
       <div className="flex w-max items-center gap-5 py-1">
         {[...images, ...images].map((image, index) => (
