@@ -763,9 +763,7 @@ export function Chatbot() {
                 <div>
                   <div className="flex items-center gap-1.5">
                     <h3 className="font-bold text-sm leading-tight tracking-wide">Polly the Macaw</h3>
-                    <span className="bg-amber-400/20 text-[10px] text-amber-300 font-bold border border-amber-400/25 px-1.5 py-0.5 rounded-full uppercase tracking-wider">
-                      Store Mascot
-                    </span>
+                   
                   </div>
                   <p className="text-[11px] text-emerald-200">Exotic Pets AI Assistant • Online</p>
                 </div>
