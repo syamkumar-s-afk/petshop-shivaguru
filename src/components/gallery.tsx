@@ -64,22 +64,23 @@ function GalleryRow({ images, direction = 1 }: GalleryRowProps) {
     let lastTime = performance.now();
     const speed = 0.035;
 
-    if (direction < 0) {
-      scroller.scrollLeft = scroller.scrollWidth / 2;
-    }
+    // Start in the safe middle third
+    const thirdWidth = scroller.scrollWidth / 3;
+    scroller.scrollLeft = thirdWidth;
 
     const animate = (time: number) => {
       const delta = Math.min(time - lastTime, 32);
       lastTime = time;
 
       if (!isUserInteracting.current) {
-        const loopPoint = scroller.scrollWidth / 2;
+        const loopPoint = scroller.scrollWidth / 3;
         scroller.scrollLeft += direction * delta * speed;
 
-        if (direction > 0 && scroller.scrollLeft >= loopPoint) {
+        // Loop boundaries within the safe middle third
+        if (direction > 0 && scroller.scrollLeft >= loopPoint * 2) {
           scroller.scrollLeft -= loopPoint;
         }
-        if (direction < 0 && scroller.scrollLeft <= 0) {
+        if (direction < 0 && scroller.scrollLeft <= loopPoint) {
           scroller.scrollLeft += loopPoint;
         }
       }
@@ -112,11 +113,11 @@ function GalleryRow({ images, direction = 1 }: GalleryRowProps) {
   const handleScroll = () => {
     const scroller = scrollerRef.current;
     if (!scroller) return;
-    const loopPoint = scroller.scrollWidth / 2;
+    const loopPoint = scroller.scrollWidth / 3;
 
-    if (direction > 0 && scroller.scrollLeft >= loopPoint) {
+    if (direction > 0 && scroller.scrollLeft >= loopPoint * 2) {
       scroller.scrollLeft -= loopPoint;
-    } else if (direction < 0 && scroller.scrollLeft <= 0) {
+    } else if (direction < 0 && scroller.scrollLeft <= loopPoint) {
       scroller.scrollLeft += loopPoint;
     }
   };
@@ -185,7 +186,7 @@ function GalleryRow({ images, direction = 1 }: GalleryRowProps) {
       }}
     >
       <div className="flex w-max items-center gap-5 py-1">
-        {[...images, ...images].map((image, index) => (
+        {[...images, ...images, ...images].map((image, index) => (
           <Image
             alt={image.alt}
             className="h-28 w-32 shrink-0 select-none object-contain md:h-36 md:w-40"
