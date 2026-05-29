@@ -217,49 +217,6 @@ function productCarouselImages(product: Product) {
     product.galleryImages && product.galleryImages.length > 0
       ? product.galleryImages
       : [product.image];
-  const name = product.name.toLowerCase();
-
-  if (product.category === "puppies") {
-    return uniqueImages([
-      ...baseImages,
-      "/images/gallery/golden-retriever.png",
-      "/images/gallery/husky-puppy.png",
-      "/images/gallery/labrador-puppy.png",
-      "/images/gallery/beagle-puppy.png",
-    ]).slice(0, 5);
-  }
-
-  if (product.category === "food" && (name.includes("dog") || name.includes("puppy"))) {
-    return uniqueImages([
-      ...baseImages,
-      "/images/dog_foods_brands.png",
-      "/images/gallery/golden-retriever.png",
-      "/images/gallery/labrador-puppy.png",
-      "/images/gallery/husky-puppy.png",
-    ]).slice(0, 5);
-  }
-
-  if (product.category === "food" && name.includes("cat")) {
-    return uniqueImages([
-      ...baseImages,
-      "/images/gallery/persian-cat.png",
-      "/images/gallery/maine-coon-cat.png",
-      "/images/gallery/siamese-cat.png",
-    ]).slice(0, 5);
-  }
-
-  if (product.category === "birds") {
-    return uniqueImages([
-      ...baseImages,
-      "/images/gallery/macaw-parrot.png",
-      "/images/gallery/cockatiel.png",
-      "/images/gallery/budgie.png",
-    ]).slice(0, 5);
-  }
-
-  if (product.category === "aquarium") {
-    return uniqueImages([...baseImages, "/images/aquarium.png"]).slice(0, 5);
-  }
 
   return uniqueImages(baseImages).slice(0, 5);
 }

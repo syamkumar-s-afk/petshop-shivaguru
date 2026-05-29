@@ -24,12 +24,23 @@ export const site = {
   footerLogo:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAiTgpry6n9uFx9g8eeIPp5Qc8maJEWmwiA-whSeydYwxz4HdUG2NOd9TNfyC0ZzH13fMTrqNKvYx2-YqShLuhCsPG82K3nEbI4YgzkiKwvn4mjQX-9rC1yFiHy-SQ2T75hKY8-8F63Co7uQ3L8jZuyr-nVoGlePKZJX3y00toWG0BGYvMr9E6GKGJghrzlHZNLnGAJ0fS2IGuyJUrBS01J1LxQ5pGPuo6mw5jLv6n8dsyGj2WoOlvmKYfzEtdUgitEQ2YJ9eUdM14",
   heroImages: [
-    "/images/dog_food.png",
-    "/images/pets_collection.png",
-    "/images/pet_supplements.png",
-    "/images/dog_foods_brands.png",
+    "/images/products/foods/dogs/pedigree-adult-chicken.png",
+    "/images/products/dogs/golden-retriever/image-1.png",
+    "/images/products/medicines/supplements/multivitamin-tablets.png",
+    "/images/products/foods/dogs/drools-adult-dog.png",
   ],
 };
+
+export const categories: Category[] = [
+  { id: "all", label: "All Items", icon: Package },
+  { id: "birds", label: "Birds", icon: Bird },
+  { id: "puppies", label: "Puppies", icon: Dog },
+  { id: "aquarium", label: "Aquarium", icon: Fish },
+  { id: "food", label: "Pet Food", icon: ShoppingBag },
+  { id: "accessories", label: "Accessories", icon: Bone },
+  { id: "small-pets", label: "Small Pets", icon: Ham },
+  { id: "supplements", label: "Supplements", icon: ShieldCheck },
+];
 
 export type CategoryId =
   | "all"
@@ -46,17 +57,6 @@ export type Category = {
   label: string;
   icon: LucideIcon;
 };
-
-export const categories: Category[] = [
-  { id: "all", label: "All Items", icon: Package },
-  { id: "birds", label: "Birds", icon: Bird },
-  { id: "puppies", label: "Puppies", icon: Dog },
-  { id: "aquarium", label: "Aquarium", icon: Fish },
-  { id: "food", label: "Pet Food", icon: ShoppingBag },
-  { id: "accessories", label: "Accessories", icon: Bone },
-  { id: "small-pets", label: "Small Pets", icon: Ham },
-  { id: "supplements", label: "Supplements", icon: ShieldCheck },
-];
 
 export type Product = {
   id: string;
@@ -79,588 +79,1375 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  // --- PETS SECTION ---
   {
-    id: "blue-gold-macaw",
-    name: "Blue & Gold Macaw",
-    description: "Beautiful, intelligent & playful macaw parrots.",
-    category: "birds",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDzTBJe6C84AG5reDBaTHQQThUTtnwH9QO3kaHkqmiaLdPQW3mXwr5p0DaMGqTSUaXoPX-eb7JnTfz3eQutyVhvigv_qr9yDtDEmdI0iELA1sp02mi9qWUPMrSFjDHg_GzIZ_LN2QwBO5OqDf2T65N8lntmMSsXEpNSSZfUpou--2TQxbhKVabkOe_tbfabLV5XcFPvht3EMB9vXMPEKY2hGQSUTbZCe7wViyot5IMQ2jyGNzXJko_wycm2HEncRKf-xUaYVqbIWgw",
+    id: "pomeranian-puppy",
+    name: "Pomeranian Puppy",
+    description: "Extremely cute, fluffy & purebred Pomeranian puppy.",
+    category: "puppies",
+    image: "/images/products/dogs/pomeranian-puppy/image-1.png",
     action: "enquire",
-    price: 45000,
-    age: "Adult",
-    createdAt: "2026-05-20T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDzTBJe6C84AG5reDBaTHQQThUTtnwH9QO3kaHkqmiaLdPQW3mXwr5p0DaMGqTSUaXoPX-eb7JnTfz3eQutyVhvigv_qr9yDtDEmdI0iELA1sp02mi9qWUPMrSFjDHg_GzIZ_LN2QwBO5OqDf2T65N8lntmMSsXEpNSSZfUpou--2TQxbhKVabkOe_tbfabLV5XcFPvht3EMB9vXMPEKY2hGQSUTbZCe7wViyot5IMQ2jyGNzXJko_wycm2HEncRKf-xUaYVqbIWgw",
-    ],
-    about: "The Blue & Gold Macaw is one of the most iconic parrot species in the world. Known for their striking blue and yellow plumage, these intelligent birds can live up to 60 years and form deep bonds with their owners. They are excellent talkers and can learn a vocabulary of 20+ words. Native to South America, they thrive in warm climates and love social interaction.",
-    keyFeatures: [
-      "Lifespan: 50–60 years",
-      "Size: 76–86 cm (30–34 inches)",
-      "Can learn to talk and mimic sounds",
-      "Highly intelligent & trainable",
-      "Vibrant blue & gold plumage",
-      "Social and affectionate personality",
-    ],
-    conditions: [
-      "Requires a spacious cage (minimum 3ft x 3ft x 5ft)",
-      "Needs daily interaction and mental stimulation",
-      "Diet: Seeds, nuts, fruits, and vegetables",
-      "Regular vet checkups recommended every 6 months",
-      "Not ideal for first-time bird owners",
-      "Keep away from kitchen fumes and aerosols",
-    ],
-  },
-  {
-    id: "love-birds",
-    name: "Love Birds",
-    description: "Friendly & colorful companions for your home.",
-    category: "birds",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAh42X_PnkfebDPTbVQYaKCiGyP8DRX4b3CygceRX6DcbX-KgSh7fZYprcfM6s3_o9-O76bUIheiMJi3B_5m9tHTFNIFauSXY7iHRAC-p92nyfVewWh7HtGKsgioQYF1mMAfM1NQ5DcXlJ8jBdhFmDAgHCV9pB4Y-j9OTuy4zDQs0IRkd8i4_LNVInZpFFaLWzYJ0j9SC8Ds2Eo-CXNAv4BMvSJ7JYeBTcBrwFLkNxRfvY2DRxSJGhOvvdHnLwTr14qfkUulXIYkjw",
-    action: "enquire",
-    price: 2500,
+    price: 14000,
     age: "Baby",
-    createdAt: "2026-05-22T10:00:00Z",
+    createdAt: "2026-05-28T09:00:00Z",
     galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAh42X_PnkfebDPTbVQYaKCiGyP8DRX4b3CygceRX6DcbX-KgSh7fZYprcfM6s3_o9-O76bUIheiMJi3B_5m9tHTFNIFauSXY7iHRAC-p92nyfVewWh7HtGKsgioQYF1mMAfM1NQ5DcXlJ8jBdhFmDAgHCV9pB4Y-j9OTuy4zDQs0IRkd8i4_LNVInZpFFaLWzYJ0j9SC8Ds2Eo-CXNAv4BMvSJ7JYeBTcBrwFLkNxRfvY2DRxSJGhOvvdHnLwTr14qfkUulXIYkjw",
+      "/images/products/dogs/pomeranian-puppy/image-1.png",
+      "/images/products/dogs/pomeranian-puppy/image-2.png",
+      "/images/products/dogs/pomeranian-puppy/image-3.png",
+      "/images/products/dogs/pomeranian-puppy/image-4.png",
     ],
-    about: "Love Birds are small, colorful parrots that are perfect for families and first-time bird owners. They are known for their affectionate nature and the strong bonds they form with their mates. Available in a range of beautiful colors including peach-faced, Fischer's, and masked varieties. They are active, playful, and love to chirp throughout the day.",
+    about: "Our white Pomeranian puppies are highly active, playful, and fully healthy. Known for their thick, luxurious double coats and friendly expressions, Pomeranians make excellent family companions and are highly adaptable to apartment living. Fully vet-checked and ready for a loving home.",
     keyFeatures: [
-      "Lifespan: 10–15 years",
-      "Size: 13–17 cm (5–7 inches)",
-      "Available in multiple color mutations",
-      "Great for beginners and families",
-      "Active and playful personality",
-      "Best kept in pairs for companionship",
+      "Extremely cute and fluffy white double coat",
+      "Very friendly, playful, and intelligent",
+      "Compact size, perfect for apartment living",
+      "Active and smart companion dog",
+      "Vet-checked with complete health record"
     ],
     conditions: [
-      "Cage size: minimum 18\" x 18\" x 24\"",
-      "Diet: Seeds, millet, fresh fruits & leafy greens",
-      "Needs clean water daily",
-      "Keep cage in a well-lit area away from direct sunlight",
-      "Toys and perches for mental stimulation",
-      "Avoid chocolate, avocado, and caffeine",
-    ],
+      "Requires daily coat brushing to prevent tangles",
+      "Provide high-quality puppy food portioned correctly",
+      "Needs moderate daily indoor exercise and games",
+      "Booster vaccines must be administered on schedule",
+      "Keep in a cool, clean indoor environment"
+    ]
   },
   {
     id: "golden-retriever-puppy",
     name: "Golden Retriever Puppy",
     description: "Healthy, active & fully vaccinated golden retriever puppies.",
     category: "puppies",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCdkUX8osWsxI9lVmf3DwTeL4Yz8KFSBvVPmKno4rtm1ctajashYlGXK_pmq_UDrWF0xFDs9tzokPaixtDH_yT5DNVD60XJWzgW1JRrhuwiY36_FuzSw53WbbgHUHD32beTq9QcMyXQrzat37rT-8QPzBhyVRA7hE0ZfEEbBFccy6c1X-ecFhrw1gTViy8QQZ6DEV4qd1642HMnGbViNVVGT3rN3KsLW2AGNxeb6Wzd4vhrB6mddZqr4JAYCWTGDqzLxgstH7N4jqw",
+    image: "/images/products/dogs/golden-retriever/image-1.png",
     action: "enquire",
     price: 15000,
     age: "Baby",
     createdAt: "2026-05-25T10:00:00Z",
     galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCdkUX8osWsxI9lVmf3DwTeL4Yz8KFSBvVPmKno4rtm1ctajashYlGXK_pmq_UDrWF0xFDs9tzokPaixtDH_yT5DNVD60XJWzgW1JRrhuwiY36_FuzSw53WbbgHUHD32beTq9QcMyXQrzat37rT-8QPzBhyVRA7hE0ZfEEbBFccy6c1X-ecFhrw1gTViy8QQZ6DEV4qd1642HMnGbViNVVGT3rN3KsLW2AGNxeb6Wzd4vhrB6mddZqr4JAYCWTGDqzLxgstH7N4jqw",
+      "/images/products/dogs/golden-retriever/image-1.png",
+      "/images/products/dogs/golden-retriever/image-2.png",
+      "/images/products/dogs/golden-retriever/image-3.png",
+      "/images/products/dogs/golden-retriever/image-4.png",
     ],
-    about: "The Golden Retriever is one of the most popular dog breeds worldwide, known for their gentle temperament, intelligence, and loyalty. These puppies come fully vaccinated with health certificates. Golden Retrievers are excellent family dogs, great with children, and highly trainable. They are also used as therapy dogs and service animals due to their calm and obedient nature.",
+    about: "The Golden Retriever is renowned worldwide for its exceptionally gentle temperament, high intelligence, and loyalty. These gorgeous puppies come fully vaccinated with certified health checks. Excellent with children and families.",
     keyFeatures: [
       "Lifespan: 10–12 years",
-      "Adult weight: 25–35 kg",
-      "Fully vaccinated with health certificate",
-      "Excellent family & kids-friendly breed",
-      "Highly trainable and intelligent",
-      "Beautiful golden coat, regular grooming needed",
+      "Highly trainable, loyal, and friendly",
+      "Fully vaccinated with official health certificate",
+      "Wonderful temperament, ideal for families with children",
+      "Beautiful golden-colored coat"
     ],
     conditions: [
-      "Requires daily exercise (30–60 min walks)",
-      "Regular grooming and brushing needed",
-      "Diet: High-quality puppy food, transition to adult food at 12 months",
-      "Schedule vet visits for booster shots",
-      "Needs space to run and play",
-      "Prone to hip dysplasia – maintain healthy weight",
-    ],
-  },
-  {
-    id: "dachshund-puppy",
-    name: "Dachshund Puppy",
-    description: "Playful, smart & adorable sausage dog.",
-    category: "puppies",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCcXk7wgkF76sN2KBINTlSBIDhbwjOga7tnbY_FH9mQ_gbmR2pFbAX2XhrurGji4DpZD9ONqDj9nwYWGicvX6wvOvnmesoDDuCOuS7RsbXj-54xsnlzm5NbVCCdajVX2wno-OPsmWWH9aGcWPL8uQ8nZqXXzxnodA06E-Ccpcm6JRz32Tuf_2eCdNGOEuNtLt4eY1b6qCHrU1-6lvFDD9ZWaIhyp3RVEqEGAeoGynHeRkvEgB_OfEfArUDUwOw5bG1MDNAjeV5Aa6M",
-    action: "enquire",
-    price: 12000,
-    age: "Baby",
-    createdAt: "2026-05-24T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCcXk7wgkF76sN2KBINTlSBIDhbwjOga7tnbY_FH9mQ_gbmR2pFbAX2XhrurGji4DpZD9ONqDj9nwYWGicvX6wvOvnmesoDDuCOuS7RsbXj-54xsnlzm5NbVCCdajVX2wno-OPsmWWH9aGcWPL8uQ8nZqXXzxnodA06E-Ccpcm6JRz32Tuf_2eCdNGOEuNtLt4eY1b6qCHrU1-6lvFDD9ZWaIhyp3RVEqEGAeoGynHeRkvEgB_OfEfArUDUwOw5bG1MDNAjeV5Aa6M",
-    ],
-    about: "The Dachshund, affectionately known as the 'sausage dog', is a playful and curious breed with a bold personality. Despite their small size, they are courageous and make excellent watchdogs. Their long body and short legs give them a unique and adorable appearance. They come in smooth, long-haired, and wire-haired varieties.",
-    keyFeatures: [
-      "Lifespan: 12–16 years",
-      "Adult weight: 7–14 kg",
-      "Compact size, ideal for apartments",
-      "Bold, curious & alert personality",
-      "Low shedding (smooth coat variety)",
-      "Great watchdog with a loud bark",
-    ],
-    conditions: [
-      "Avoid excessive jumping to protect spine",
-      "Daily short walks recommended (20–30 min)",
-      "Diet: Portion-controlled meals to prevent obesity",
-      "Regular dental care needed",
-      "Keep nails trimmed regularly",
-      "Prone to back problems – use ramps instead of stairs",
-    ],
-  },
-  {
-    id: "angelfish",
-    name: "Angelfish",
-    description: "Elegant freshwater fish for a peaceful aquarium.",
-    category: "aquarium",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDcYDOovI_9Xqe9hl3UbJQ4wWh8FC0SldBKpb3-U9Y5ZLF6tgu1jMWIqGjWkXUb2OffcqxVwA-J-JMXTH7M7Gj8pARf11kds544e6RiQLpy0P7lJCuDACKVmGwzHKWk01uhRBO22Su9aQKffp-2IzPul6K2O4j9gevUVRBr55bqw-1kdfRe8rdmfCHR9M4V7dPawTWX9tCvqdvRPoe5eBqH8_fcZMCkVv_dzmOe0zuhm4F6Z_hGhWUDg03fJ-99aeJJ2jE-9c4UO3s",
-    action: "enquire",
-    price: 200,
-    age: "Adult",
-    createdAt: "2026-05-21T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDcYDOovI_9Xqe9hl3UbJQ4wWh8FC0SldBKpb3-U9Y5ZLF6tgu1jMWIqGjWkXUb2OffcqxVwA-J-JMXTH7M7Gj8pARf11kds544e6RiQLpy0P7lJCuDACKVmGwzHKWk01uhRBO22Su9aQKffp-2IzPul6K2O4j9gevUVRBr55bqw-1kdfRe8rdmfCHR9M4V7dPawTWX9tCvqdvRPoe5eBqH8_fcZMCkVv_dzmOe0zuhm4F6Z_hGhWUDg03fJ-99aeJJ2jE-9c4UO3s",
-    ],
-    about: "Angelfish are among the most popular freshwater aquarium fish, admired for their graceful shape and elegant fins. They belong to the Cichlid family and are native to the Amazon Basin. Their triangular body shape and long, flowing fins make them a stunning centerpiece in any aquarium. Available in silver, marble, black, and koi varieties.",
-    keyFeatures: [
-      "Lifespan: 8–10 years",
-      "Size: Up to 15 cm (6 inches) tall",
-      "Peaceful community fish",
-      "Available in multiple color varieties",
-      "Graceful swimming pattern",
-      "Hardy and easy to maintain",
-    ],
-    conditions: [
-      "Tank size: Minimum 75 litres (20 gallons)",
-      "Water temperature: 24–28°C (75–82°F)",
-      "pH level: 6.0–7.5",
-      "Feed: Flakes, pellets, and frozen bloodworms",
-      "Avoid keeping with fin-nipping species",
-      "Weekly 25% water change recommended",
-    ],
-  },
-  {
-    id: "neon-tetra",
-    name: "Neon Tetra",
-    description: "Colorful schooling fish, perfect for community tanks.",
-    category: "aquarium",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC_7NvHXMdgabyPsi-fqIggC4vnuwBTPx32TpZWJH09nDhnVeV5jUUUZZmFCKwKMzUui9gPfe9xvQtRiE-W2tharZa7hBmHu3X7ZTMD82blzIynryFrxToUGgPcDbrAdbVb3dGWpT8YIaadtqnt_jMN1BC3CRYPC1vuQcuXsRlTWD5PFw0GU4ro1QUGsql8nH322k1TZgQ05wmfkkG0o_xaribTxVy_9O20zj5NBuym_aSR2DETaPaw1NJ-JpD9KiqOHcaj5a5Cb44",
-    action: "enquire",
-    price: 50,
-    age: "Baby",
-    createdAt: "2026-05-18T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC_7NvHXMdgabyPsi-fqIggC4vnuwBTPx32TpZWJH09nDhnVeV5jUUUZZmFCKwKMzUui9gPfe9xvQtRiE-W2tharZa7hBmHu3X7ZTMD82blzIynryFrxToUGgPcDbrAdbVb3dGWpT8YIaadtqnt_jMN1BC3CRYPC1vuQcuXsRlTWD5PFw0GU4ro1QUGsql8nH322k1TZgQ05wmfkkG0o_xaribTxVy_9O20zj5NBuym_aSR2DETaPaw1NJ-JpD9KiqOHcaj5a5Cb44",
-    ],
-    about: "Neon Tetras are one of the most popular tropical fish in the hobby. Their iridescent blue and red stripe makes them one of the most eye-catching fish in any aquarium. They are peaceful schooling fish that do best in groups of 6 or more. Native to South American blackwater streams, they bring a dazzling flash of colour to planted community tanks.",
-    keyFeatures: [
-      "Lifespan: 5–8 years",
-      "Size: 2.5 cm (1 inch)",
-      "Brilliant iridescent blue & red coloring",
-      "Peaceful community fish",
-      "Best kept in schools of 6+",
-      "Low maintenance and beginner-friendly",
-    ],
-    conditions: [
-      "Tank size: Minimum 38 litres (10 gallons) for a school",
-      "Water temperature: 20–26°C (68–79°F)",
-      "pH level: 6.0–7.0 (slightly acidic preferred)",
-      "Feed: Micro pellets, flakes, and baby brine shrimp",
-      "Prefer dim lighting and planted tanks",
-      "Sensitive to water quality – cycle tank before adding",
-    ],
-  },
-  {
-    id: "premium-dog-food",
-    name: "Pedigree Adult Dog Food",
-    description: "High-quality chicken and vegetables dry food for adult dogs.",
-    category: "food",
-    image: "/images/dog_food.png",
-    imageFit: "contain",
-    imageTone: "bg-orange-50/60",
-    action: "details",
-    price: 1800,
-    brand: "Pedigree",
-    age: "Adult",
-    dietaryRequirements: "High Protein",
-    createdAt: "2026-05-15T10:00:00Z",
-    galleryImages: [
-      "/images/dog_food.png",
-    ],
-    about: "Pedigree Adult Dog Food provides complete and balanced nutrition for adult dogs of all breeds. Formulated with real chicken and essential vegetables, it delivers high-quality protein to support strong muscles, dietary fibers for healthy digestion, and zinc with omega-6 for a radiant coat.",
-    keyFeatures: [
-      "Chicken and wholesome vegetables formula",
-      "High protein for muscle maintenance",
-      "Omega 6 & Zinc for healthy skin and coat",
-      "Dietary fibers to support gut health",
-      "No artificial colors or preservatives",
-      "Available in 3kg, 10kg, and 20kg packs",
-    ],
-    conditions: [
-      "Store in a cool, dry place",
-      "Seal bag after opening to maintain freshness",
-      "Serve at room temperature",
-      "Always provide fresh drinking water",
-      "Follow feeding guide based on dog's weight",
-      "Transition gradually over 7 days from old food",
-    ],
-  },
-  {
-    id: "premium-cat-food",
-    name: "Premium Cat Food",
-    description: "Complete & balanced food for happy cats.",
-    category: "food",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCu4GgAGPZPkOjNcUIcge5WT6sWervQJjfA4EkQw5DzT2APsoKm2MzaevxEC_CFdixX2-cu4oEXQXOfO_lcPq_E68A0CMcFD_WeWvR-eRd2D69rkZSYW6hrshVeT-S1rOh3Gyxy2nrCUvgWJV_tD2WsUna12NWCsZfuuRu1b6U2O0_iAJ6YuKHKYbGhaDoInBvDmg9QWY-U2_eCR4RjIUq14s9cjjZ5nJ60KUdJ8p4BeUD-BEeP4yVT1H_AMqD-fr_fQz8M5OXAOQY",
-    imageFit: "contain",
-    imageTone: "bg-blue-50/60",
-    action: "details",
-    price: 1200,
-    brand: "Whiskas",
-    dietaryRequirements: "Grain Free",
-    createdAt: "2026-05-10T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCu4GgAGPZPkOjNcUIcge5WT6sWervQJjfA4EkQw5DzT2APsoKm2MzaevxEC_CFdixX2-cu4oEXQXOfO_lcPq_E68A0CMcFD_WeWvR-eRd2D69rkZSYW6hrshVeT-S1rOh3Gyxy2nrCUvgWJV_tD2WsUna12NWCsZfuuRu1b6U2O0_iAJ6YuKHKYbGhaDoInBvDmg9QWY-U2_eCR4RjIUq14s9cjjZ5nJ60KUdJ8p4BeUD-BEeP4yVT1H_AMqD-fr_fQz8M5OXAOQY",
-    ],
-    about: "Premium Cat Food is a grain-free formula made with real ocean fish as the primary ingredient. It supports healthy digestion with added prebiotics and provides all the essential amino acids cats need, including taurine for heart and eye health. Perfect for cats of all ages with a taste they will love.",
-    keyFeatures: [
-      "Real ocean fish as #1 ingredient",
-      "Grain-free formula for sensitive stomachs",
-      "Added taurine for heart & eye health",
-      "Rich in Omega 3 for shiny coat",
-      "No artificial preservatives or fillers",
-      "Available in 1.5kg, 7kg, and 12kg packs",
-    ],
-    conditions: [
-      "Store in a cool, dry place",
-      "Reseal packaging after each use",
-      "Fresh water should always be available",
-      "Follow daily feeding portions on the package",
-      "Transition gradually from previous food",
-      "Not suitable for kittens under 6 weeks",
-    ],
-  },
-  {
-    id: "dog-collar",
-    name: "Dog Collar",
-    description: "Durable, comfortable & stylish collars for your pets.",
-    category: "accessories",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCLrXMDzaIJ8ZUu3J3rQ7IgC4anFxZRlLs6XcACFYrhDYuPOG--h6CiqoberpWakBgciRWOJBJ9xt0Zx1mEA-VrDlpBuA8KfxWggBuzzT1ywiMSvJ-XNHewIJk74hYxMy1IOCQkczwPYWznPwio8b0LYc3KByOlTB-2K06pmqd5i_5Nda8GAb1s8DNHu2Bu1mw94vZ_d9yFRqRMw9HnqYE9SACBogU-OwbEgqYxw8kxJxtAxmZcmv8hEslYQPDPYkQhnF6bZN-Vm9w",
-    imageFit: "contain",
-    action: "details",
-    price: 350,
-    brand: "PetPlus",
-    createdAt: "2026-05-23T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCLrXMDzaIJ8ZUu3J3rQ7IgC4anFxZRlLs6XcACFYrhDYuPOG--h6CiqoberpWakBgciRWOJBJ9xt0Zx1mEA-VrDlpBuA8KfxWggBuzzT1ywiMSvJ-XNHewIJk74hYxMy1IOCQkczwPYWznPwio8b0LYc3KByOlTB-2K06pmqd5i_5Nda8GAb1s8DNHu2Bu1mw94vZ_d9yFRqRMw9HnqYE9SACBogU-OwbEgqYxw8kxJxtAxmZcmv8hEslYQPDPYkQhnF6bZN-Vm9w",
-    ],
-    about: "This premium dog collar is made from high-quality nylon with a reinforced stitching pattern for extra durability. The quick-release buckle makes it easy to put on and take off. Available in multiple sizes from Small to XL to fit all breeds. Reflective strip included for nighttime visibility and safety during walks.",
-    keyFeatures: [
-      "High-strength nylon construction",
-      "Quick-release safety buckle",
-      "Reflective strip for night visibility",
-      "Adjustable sizing for perfect fit",
-      "Available in S, M, L, and XL",
-      "Multiple colours available",
-    ],
-    conditions: [
-      "Measure your dog's neck before ordering",
-      "Leave 2-finger gap between collar and neck",
-      "Check collar fit as puppy grows",
-      "Hand wash with mild soap when dirty",
-      "Replace if fraying or buckle damage is visible",
-      "Not a substitute for a harness during walks",
-    ],
-  },
-  {
-    id: "rope-toy",
-    name: "Rope Toy",
-    description: "Strong & safe toys for hours of fun.",
-    category: "accessories",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAmUWW38cAGIBwsoLABcSzR_e3ZgkE-siG6UQE39mfmOA3AsMWd6EmC30FWuCKaGBJ8mc5Ucn0w7mPPjiNkcaqEqMkNF81nJ1FmqdYgJhzg-W2X2W3j5LnsE8LvrWuFYMmH7z14pgsjpO2UpaB4wWKeAxuMc-tc4iKRrSnuAPNYeVvzKXUatXW8rQ1aeb4S4CTgLByAMngIltuNNyQ-KHiSnfdC15U600zfO4s6mjctQhzujCkQsquiBjEjVjkackHGhsluqsU_P-k",
-    imageFit: "contain",
-    action: "details",
-    price: 150,
-    brand: "KONG",
-    createdAt: "2026-05-05T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAmUWW38cAGIBwsoLABcSzR_e3ZgkE-siG6UQE39mfmOA3AsMWd6EmC30FWuCKaGBJ8mc5Ucn0w7mPPjiNkcaqEqMkNF81nJ1FmqdYgJhzg-W2X2W3j5LnsE8LvrWuFYMmH7z14pgsjpO2UpaB4wWKeAxuMc-tc4iKRrSnuAPNYeVvzKXUatXW8rQ1aeb4S4CTgLByAMngIltuNNyQ-KHiSnfdC15U600zfO4s6mjctQhzujCkQsquiBjEjVjkackHGhsluqsU_P-k",
-    ],
-    about: "The KONG Rope Toy is designed for interactive play between you and your dog. Made from 100% natural cotton fibres, it is safe for chewing and helps clean teeth and massage gums during play. The knotted ends provide a comfortable grip for tug-of-war games. Available in different sizes for small, medium, and large breeds.",
-    keyFeatures: [
-      "100% natural cotton fibres",
-      "Helps clean teeth while playing",
-      "Knotted ends for easy gripping",
-      "Great for tug-of-war and fetch",
-      "Durable construction for heavy chewers",
-      "Available in 3 sizes: S, M, L",
-    ],
-    conditions: [
-      "Supervise your pet during play",
-      "Replace when fibres start to unravel",
-      "Not suitable for aggressive chewers",
-      "Machine washable in cold water",
-      "Remove if pieces break off",
-      "Dry thoroughly before giving back to pet",
-    ],
-  },
-  {
-    id: "bird-play-stand",
-    name: "Bird Play Stand",
-    description: "Interactive play stand for birds to stay active.",
-    category: "accessories",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC_qOBnqNZh1HlJ4LL277K7iccqkGADm455KT4Ljr4xo-PuUnwy2u7AMpaWFChorfej1AbTyI4qi1SctSavmr_j_a84jh_94vqJdg1mG14k_JIvKsfVjuIlwDhhZyrFz1qxJ4fypn9sc8KWPXazeAjGUpepYkYGwFsIhH55Rmy21rj4HSx-zcNaydDJ0uDvR8kfhEut-GvyaBZpH3BP4rD4CLpL6jBYpMTxIRSTZbLVx9GnArID0Y7cK4Bt8kQPh765kPNw96DVHxo",
-    imageFit: "contain",
-    action: "details",
-    price: 1800,
-    brand: "Aviary Basics",
-    createdAt: "2026-05-12T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC_qOBnqNZh1HlJ4LL277K7iccqkGADm455KT4Ljr4xo-PuUnwy2u7AMpaWFChorfej1AbTyI4qi1SctSavmr_j_a84jh_94vqJdg1mG14k_JIvKsfVjuIlwDhhZyrFz1qxJ4fypn9sc8KWPXazeAjGUpepYkYGwFsIhH55Rmy21rj4HSx-zcNaydDJ0uDvR8kfhEut-GvyaBZpH3BP4rD4CLpL6jBYpMTxIRSTZbLVx9GnArID0Y7cK4Bt8kQPh765kPNw96DVHxo",
-    ],
-    about: "The Aviary Basics Bird Play Stand is a tabletop activity centre designed to keep your feathered friend entertained outside the cage. It features multiple perches, a swing, feeding cups, and a chew toy. Made from bird-safe natural wood with a stainless steel base for stability. Suitable for parakeets, cockatiels, lovebirds, and small parrots.",
-    keyFeatures: [
-      "Natural wood perches and swing",
-      "Stainless steel base for stability",
-      "Includes 2 feeding cups",
-      "Detachable chew toy included",
-      "Easy to assemble (no tools needed)",
-      "Suitable for small to medium birds",
-    ],
-    conditions: [
-      "Place on a flat, stable surface",
-      "Clean feeding cups daily",
-      "Inspect wood for wear and replace when needed",
-      "Supervise birds when on the stand",
-      "Do not place near open windows or fans",
-      "Wipe base with damp cloth weekly",
-    ],
-  },
-  {
-    id: "syrian-hamster",
-    name: "Syrian Hamster",
-    description: "Cute, friendly & easy to care for small pets.",
-    category: "small-pets",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBulr0k2geVzn5tUgIww_uvVnHU23lehvJpEjW25_cibqe1mgm9NuH-l6Slp0SxdQ4huCxtnMAJlnnkRqMsfDoSFsuoKgpRoRsWqbrW7SpJVab-Bbdg4ea4UNhoIB8C9nDxgW9rHazcJMlVQo7s9HRGcQQ3f3nWFHkJEeqX2N3QOJnWvDff5znAApErh8uZcMRjxi2Yh0SOzQZ6Ph4hdpvm0sejqMY522A_2TnPbNoS7r4bdSxM2tWHPPuB8TMba5nuJ77goQPnlcE",
-    imageTone: "bg-orange-50/40",
-    action: "details",
-    price: 450,
-    age: "Baby",
-    createdAt: "2026-05-26T10:00:00Z",
-    galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBulr0k2geVzn5tUgIww_uvVnHU23lehvJpEjW25_cibqe1mgm9NuH-l6Slp0SxdQ4huCxtnMAJlnnkRqMsfDoSFsuoKgpRoRsWqbrW7SpJVab-Bbdg4ea4UNhoIB8C9nDxgW9rHazcJMlVQo7s9HRGcQQ3f3nWFHkJEeqX2N3QOJnWvDff5znAApErh8uZcMRjxi2Yh0SOzQZ6Ph4hdpvm0sejqMY522A_2TnPbNoS7r4bdSxM2tWHPPuB8TMba5nuJ77goQPnlcE",
-    ],
-    about: "Syrian Hamsters, also known as Golden Hamsters, are the most popular hamster species kept as pets. They are solitary animals that prefer to live alone. Known for their gentle nature, they are easy to tame and handle, making them perfect for children and first-time pet owners. They are nocturnal, becoming most active during the evening and night.",
-    keyFeatures: [
-      "Lifespan: 2–3 years",
-      "Size: 15–17 cm (6–7 inches)",
-      "Gentle, easy to handle",
-      "Available in golden, cream & patterned varieties",
-      "Nocturnal – most active at night",
-      "Great first pet for children",
-    ],
-    conditions: [
-      "Cage: Minimum 80cm x 50cm floor space",
-      "Provide an exercise wheel (20cm+ diameter)",
-      "Bedding: Paper-based or aspen shavings (no cedar/pine)",
-      "Diet: Hamster mix, fresh vegetables, occasional treats",
-      "Must be housed alone – they fight if kept together",
-      "Handle gently – avoid waking during the day",
-    ],
+      "Requires daily active exercise (30-60 minutes walks)",
+      "Regular coat grooming and brushing is necessary",
+      "Feed premium puppy formulas to support joint health",
+      "Keep booster shots up-to-date",
+      "Needs spacious area or outdoor yard to play"
+    ]
   },
   {
     id: "german-shepherd-puppy",
     name: "German Shepherd Puppy",
     description: "Highly intelligent, active, and noble purebred puppy.",
     category: "puppies",
-    image: "/images/german_shepherd.png",
+    image: "/images/products/dogs/german-shepherd/image-1.png",
     action: "enquire",
     price: 18000,
     brand: "Pure Breed",
     age: "Baby",
     createdAt: "2026-05-26T12:00:00Z",
-    galleryImages: ["/images/german_shepherd.png"],
-    about: "The German Shepherd is one of the most recognizable and capable dog breeds in the world. Famous for their intelligence, courage, and strong protective instincts, GSDs are excellent companions, guardians, and family protectors. These purebred puppies are well-socialized, active, and show strong confidence. They require consistent training and plenty of physical and mental stimulation.",
+    galleryImages: [
+      "/images/products/dogs/german-shepherd/image-1.png",
+      "/images/products/dogs/german-shepherd/image-2.png",
+      "/images/products/dogs/german-shepherd/image-3.png",
+      "/images/products/dogs/german-shepherd/image-4.png",
+    ],
+    about: "German Shepherd puppies show excellent confidence, high intelligence, and quick learning capabilities. Ideal as family guardians, companion dogs, or active service pets. Extremely loyal, protective, and energetic.",
     keyFeatures: [
-      "Lifespan: 10–13 years",
-      "Highly trainable and intelligent",
-      "Strong protective instincts",
-      "Loyal and devoted family member",
-      "Excellent watchdog capabilities",
-      "Thrives with active owners",
+      "Strong protective instincts and noble appearance",
+      "Highly trainable and exceptionally intelligent",
+      "Extremely loyal and devoted family guardian",
+      "Vaccinated and dewormed properly",
+      "Thrives with active owners who provide training"
     ],
     conditions: [
-      "Requires early socialization and consistent obedience training",
-      "Needs daily vigorous exercise (1 hour+)",
-      "Brushing needed 2-3 times a week (heavy shedders)",
-      "Provide high-quality large breed puppy food",
-      "Ensure plenty of space or outdoor yard area",
-      "Plan vet visits for vaccines and hip checks",
-    ],
+      "Requires early socialization and consistent training",
+      "Needs daily high-intensity exercise and play",
+      "Heavy shedders; regular brushing needed 3 times a week",
+      "Provide diet suited for large breed active puppies",
+      "Ensure plenty of running space"
+    ]
   },
   {
     id: "labrador-puppy",
     name: "Labrador Retriever Puppy",
     description: "Extremely friendly, playful, and energetic golden puppy.",
     category: "puppies",
-    image: "/images/labrador.png",
+    image: "/images/products/dogs/labrador/image-1.png",
     action: "enquire",
     price: 16000,
     brand: "Pure Breed",
     age: "Baby",
     createdAt: "2026-05-27T08:00:00Z",
-    galleryImages: ["/images/labrador.png"],
-    about: "Labrador Retrievers are renowned for being the ultimate family pet. Gentle, outgoing, and eager to please, they get along marvelously with kids and other pets. Our golden Labrador puppy is healthy, vaccinated, and exceptionally playful. Labs love water, fetch, and companionship, making them a joyful addition to any household.",
+    galleryImages: [
+      "/images/products/dogs/labrador/image-1.png",
+      "/images/products/dogs/labrador/image-2.png",
+      "/images/products/dogs/labrador/image-3.png",
+      "/images/products/dogs/labrador/image-4.png",
+    ],
+    about: "Labrador Retrievers are outgoing, eager to please, and highly social family dogs. Our yellow Labrador puppy is healthy, vaccinated, and loves water and fetching games. A perfect and gentle companion for homes.",
     keyFeatures: [
-      "Lifespan: 10–12 years",
-      "Incredibly friendly & loving temperament",
-      "Great with children and other animals",
-      "Highly adaptable & easy to train",
-      "Loves swimming and retrieving games",
-      "Very social and outgoing",
+      "Exceptionally friendly, sweet-natured, and loving",
+      "Excellent companion for children and other pets",
+      "Very active, loves retrieval and swimming",
+      "Easy-to-groom short coat",
+      "Highly adaptable to various lifestyles"
     ],
     conditions: [
-      "Needs daily exercise (45-60 minutes walks/playtime)",
-      "Prone to weight gain – monitor food portions closely",
-      "Grooming is easy, but regular brushing is recommended",
-      "Needs chew toys to manage active chewing habits",
-      "Ensure fresh water is always available",
-      "Ensure regular vet checks for healthy growth",
-    ],
+      "Needs daily walks and play (45-60 mins)",
+      "Prone to weight gain; monitor daily food intake closely",
+      "Provide chew toys to keep them occupied",
+      "Schedule regular deworming and booster shots",
+      "Keep fresh drinking water always available"
+    ]
   },
   {
-    id: "drools-puppy-food",
-    name: "Drools Focus Puppy Food",
-    description: "Super premium dog food formulated for optimal puppy growth.",
+    id: "dachshund-puppy",
+    name: "Dachshund Puppy",
+    description: "Playful, smart & adorable sausage dog.",
+    category: "puppies",
+    image: "/images/products/dogs/labrador/image-3.png",
+    action: "enquire",
+    price: 12000,
+    age: "Baby",
+    createdAt: "2026-05-24T10:00:00Z",
+    galleryImages: [
+      "/images/products/dogs/labrador/image-3.png",
+    ],
+    about: "The Dachshund is a bold, curious breed with an iconic elongated body and short, strong legs. Compact and alert, they make excellent watchdogs and lively family companions.",
+    keyFeatures: [
+      "Compact size, ideal for apartments",
+      "Bold, curious, and energetic personality",
+      "Loyal companion with a great alert system",
+      "Low maintenance smooth coat"
+    ],
+    conditions: [
+      "Avoid high jumping to protect their long back and spine",
+      "Keep diet portion-controlled to avoid obesity",
+      "Provide short daily walks (20-30 mins)"
+    ]
+  },
+  {
+    id: "blue-gold-macaw",
+    name: "Blue & Gold Macaw",
+    description: "Beautiful, intelligent & playful macaw parrots.",
+    category: "birds",
+    image: "/images/products/birds/blue-gold-macaw/image-1.png",
+    action: "enquire",
+    price: 45000,
+    age: "Adult",
+    createdAt: "2026-05-20T10:00:00Z",
+    galleryImages: [
+      "/images/products/birds/blue-gold-macaw/image-1.png",
+      "/images/products/birds/blue-gold-macaw/image-2.png",
+    ],
+    about: "The Blue & Gold Macaw is a striking parrot native to South America. Extremely social, highly intelligent, and capable of mimicry and speech, they form deep and affectionate bonds with their owners. They can live up to 60 years under proper care.",
+    keyFeatures: [
+      "Gorgeous vibrant blue and yellow plumage",
+      "Highly intelligent, easily trainable, can learn mimicry",
+      "Long lifespan of up to 50-60 years",
+      "Extremely social and affectionate personality"
+    ],
+    conditions: [
+      "Requires a very spacious, heavy-duty cage",
+      "Needs daily socialization and toys for stimulation",
+      "Diet should include high-quality seeds, nuts, and fresh fruits"
+    ]
+  },
+  {
+    id: "love-birds",
+    name: "Love Birds",
+    description: "Friendly & colorful companions for your home.",
+    category: "birds",
+    image: "/images/products/birds/love-birds/image-1.png",
+    action: "enquire",
+    price: 2500,
+    age: "Baby",
+    createdAt: "2026-05-22T10:00:00Z",
+    galleryImages: [
+      "/images/products/birds/love-birds/image-1.png",
+      "/images/products/birds/love-birds/image-2.png",
+    ],
+    about: "Love birds are sweet, active, and highly colorful small parrots that thrive best in pairs. They are perfect for beginner bird owners and add lovely chirping and visual beauty to any home setup.",
+    keyFeatures: [
+      "Highly active, sweet, and playful companions",
+      "Vibrant green, peach, and orange variations",
+      "Beginner-friendly and low maintenance",
+      "Best housed as an affectionate pair"
+    ],
+    conditions: [
+      "Keep cage clean in a well-ventilated draft-free area",
+      "Diet: millet, bird seeds, fresh greens, and fresh water",
+      "Provide mirrors and climbing perches"
+    ]
+  },
+  {
+    id: "angelfish",
+    name: "Angelfish",
+    description: "Elegant freshwater fish for a peaceful aquarium.",
+    category: "aquarium",
+    image: "/images/products/aquarium/angelfish/image-1.png",
+    action: "enquire",
+    price: 200,
+    age: "Adult",
+    createdAt: "2026-05-21T10:00:00Z",
+    galleryImages: [
+      "/images/products/aquarium/angelfish/image-1.png",
+    ],
+    about: "Angelfish are graceful tropical freshwater fish native to the Amazon Basin. Their unique triangular bodies and long, flowing fins create a majestic look in any community tank setup.",
+    keyFeatures: [
+      "Elegant swimming behavior and iconic shape",
+      "Graceful flowing long dorsal and pectoral fins",
+      "Relatively hardy and easy to feed",
+      "Centerpiece species for community tanks"
+    ],
+    conditions: [
+      "Requires minimum tank capacity of 75 litres",
+      "Water temperature should range between 24–28°C",
+      "Feed high quality flakes, pellets, and freeze-dried bloodworms"
+    ]
+  },
+  {
+    id: "neon-tetra",
+    name: "Neon Tetra",
+    description: "Colorful schooling fish, perfect for community tanks.",
+    category: "aquarium",
+    image: "/images/products/aquarium/neon-tetra/image-1.png",
+    action: "enquire",
+    price: 50,
+    age: "Baby",
+    createdAt: "2026-05-18T10:00:00Z",
+    galleryImages: [
+      "/images/products/aquarium/neon-tetra/image-1.png",
+    ],
+    about: "Neon Tetras are iridescent, colorful schooling fish that do beautifully in groups of 6 or more. Their glowing blue and red stripes bring striking life to planted tank layouts.",
+    keyFeatures: [
+      "Vibrant glowing iridescent red & blue stripes",
+      "Peaceful schooling community fish",
+      "Low maintenance, beginner-friendly",
+      "Thrives in planted community aquariums"
+    ],
+    conditions: [
+      "Keep in groups of 6 or more to reduce stress",
+      "Sensitive to high ammonia; keep tank cycled",
+      "Maintain slightly acidic water (pH 6.0–7.0)"
+    ]
+  },
+  {
+    id: "syrian-hamster",
+    name: "Syrian Hamster",
+    description: "Cute, friendly & easy to care for small pets.",
+    category: "small-pets",
+    image: "/images/products/dogs/pomeranian-puppy/image-3.png",
+    imageTone: "bg-orange-50/60",
+    action: "details",
+    price: 450,
+    age: "Baby",
+    createdAt: "2026-05-26T10:00:00Z",
+    galleryImages: [
+      "/images/products/dogs/pomeranian-puppy/image-3.png",
+    ],
+    about: "Syrian Hamsters are adorable, solitary small pets that are highly entertaining to watch. Excellent first pets for families, they are active nocturnal creatures that love running on wheels.",
+    keyFeatures: [
+      "Lively, curious, and extremely cute appearance",
+      "Easy to handle and tame with gentle care",
+      "Solitary animals, very easy to house",
+      "Low-maintenance budget-friendly pet"
+    ],
+    conditions: [
+      "Must be housed alone in a spacious cage",
+      "Provide a silent running wheel (20cm+ diameter)",
+      "Diet: Hamster seed mix and fresh water daily"
+    ]
+  },
+
+  // --- PET FOODS SECTION ---
+  // Dog Foods
+  {
+    id: "drools-puppy-starter",
+    name: "Drools Focus Puppy Starter",
+    description: "Super premium dry starter food formulated for weaning puppies.",
     category: "food",
-    image: "/images/dog_food.png",
-    imageFit: "contain",
+    image: "/images/products/foods/dogs/drools-puppy-starter.png",
+    
+    imageTone: "bg-orange-50/60",
     action: "details",
     price: 1600,
     brand: "Drools",
     age: "Puppy",
     dietaryRequirements: "High Protein & DHA",
     createdAt: "2026-05-27T09:00:00Z",
-    galleryImages: ["/images/dog_food.png"],
-    about: "Drools Focus Puppy Super Premium Dry Dog Food is specially formulated with no wheat, corn, or soy. Rich in high-quality chicken protein, it supports bone development, muscle growth, and a robust immune system. It also features DHA to promote cognitive and brain development during active puppyhood.",
+    galleryImages: ["/images/products/foods/dogs/drools-puppy-starter.png"],
+    about: "Drools Focus Puppy Starter is a super premium, grain-free dry food that helps puppies transition smoothly from mother's milk to solid food. Fortified with essential vitamins, prebiotic fibers, and organic minerals for strong immunity.",
     keyFeatures: [
-      "Chicken as the primary ingredient",
-      "No corn, wheat, or soy fillers",
-      "Enriched with DHA for brain development",
-      "Fortified with prebiotics for gut health",
-      "Supports strong bones and active joints",
-      "Premium nutrition at a friendly price",
+      "Chicken as #1 ingredient, high protein",
+      "Zero wheat, corn, or soy content",
+      "DHA added for cognitive development",
+      "Supportive of digestive gut health",
+      "Supports strong skeletal growth"
     ],
     conditions: [
-      "Ideal for puppies under 12 months",
-      "Store in a cool, dry, and sealed container",
-      "Always provide clean drinking water",
-      "Divide feeding into 3-4 portions daily for small pups",
-      "Follow exact weight feeding guide on pack",
-      "Transition over 7 days to avoid stomach upset",
-    ],
+      "Store in a cool, dry place inside an airtight container",
+      "Transition from puppy milk gradually over 7-10 days",
+      "Always supply clean drinking water next to food bowl"
+    ]
   },
   {
-    id: "ninja-all-stages-food",
-    name: "Ninja Pro-Active Dog Food",
-    description: "Ultra premium grain-free dog food for active dogs.",
+    id: "drools-adult-dog",
+    name: "Drools Focus Adult Dog Food",
+    description: "Super premium formula for optimal muscle and health maintenance in adult dogs.",
     category: "food",
-    image: "/images/dog_foods_brands.png",
-    imageFit: "contain",
+    image: "/images/products/foods/dogs/drools-adult-dog.png",
+    
+    imageTone: "bg-orange-50/60",
     action: "details",
-    price: 2200,
-    brand: "Ninja",
-    age: "All Ages",
-    dietaryRequirements: "Grain-Free & Active Muscle",
+    price: 1850,
+    brand: "Drools",
+    age: "Adult",
+    dietaryRequirements: "Active Muscle Support",
     createdAt: "2026-05-27T10:00:00Z",
-    galleryImages: ["/images/dog_foods_brands.png"],
-    about: "Ninja Pro-Active All Life Stages Dog Food is an ultra-premium grain-free formula designed to fuel highly energetic dogs. Made with real wild-caught salmon and farm-raised duck, it provides elite proteins and essential amino acids. High in antioxidants and omega fatty acids, it keeps your dog's skin radiant and muscles strong.",
+    galleryImages: ["/images/products/foods/dogs/drools-adult-dog.png"],
+    about: "Specifically crafted with chicken and absolute zero fillers, this dry food supports the nutritional needs of fully grown, active dogs. Enhances metabolic rate, protects bone joints, and maintains ideal body weight.",
     keyFeatures: [
-      "Ultra-premium grain-free formula",
-      "Packed with active proteins (Salmon & Duck)",
-      "High level of omega fatty acids for skin care",
-      "Rich in natural antioxidants for defense",
-      "Ideal for high energy, working, or athletic dogs",
-      "Manufactured with advanced food safety standards",
+      "Real chicken protein for lean muscles",
+      "Glucosamine and Chondroitin for active joints",
+      "Omega 3 & 6 fatty acids for a glowing coat",
+      "No artificial colors or chemical preservatives"
     ],
     conditions: [
-      "Suitable for all life stages (Puppy to Senior)",
-      "Reseal the bag securely to maintain crunch and taste",
-      "Store in a clean and dry shelf",
-      "Keep plenty of fresh water nearby",
-      "Consult active feeding charts for accurate dosing",
-      "Best served at room temperature",
-    ],
+      "Follow feeding guide according to dog's weight",
+      "Reseal tightly after opening to protect crunchiness"
+    ]
   },
   {
-    id: "pet-multivitamin-syrup",
-    name: "Premium Pet Multivitamin Syrup",
-    description: "Essential vitamins and minerals formula for dogs and cats.",
+    id: "pedigree-puppy-chicken",
+    name: "Pedigree Puppy Chicken & Milk",
+    description: "Tasty, complete dry food recipe packed with chicken and milk for puppies.",
+    category: "food",
+    image: "/images/products/foods/dogs/pedigree-puppy-chicken.png",
+    
+    imageTone: "bg-orange-50/60",
+    action: "details",
+    price: 950,
+    brand: "Pedigree",
+    age: "Puppy",
+    dietaryRequirements: "Growth & Immunity",
+    createdAt: "2026-05-27T11:00:00Z",
+    galleryImages: ["/images/products/foods/dogs/pedigree-puppy-chicken.png"],
+    about: "Pedigree Puppy Chicken & Milk offers 24 essential vitamins and minerals for growing puppies. Features easily digestible pieces packed with calcium and protein to support healthy physical milestones.",
+    keyFeatures: [
+      "Calcium & phosphorus for strong bone structure",
+      "Immune system support via active antioxidants",
+      "Supports skin health and a glossy coat"
+    ],
+    conditions: [
+      "Serve at room temperature",
+      "Ensure clean drinking water is always available"
+    ]
+  },
+  {
+    id: "pedigree-adult-chicken",
+    name: "Pedigree Adult Chicken & Vegetables",
+    description: "Complete and balanced dry food containing chicken and wholesome vegetables.",
+    category: "food",
+    image: "/images/products/foods/dogs/pedigree-adult-chicken.png",
+    
+    imageTone: "bg-orange-50/60",
+    action: "details",
+    price: 1200,
+    brand: "Pedigree",
+    age: "Adult",
+    dietaryRequirements: "Daily Nutrition",
+    createdAt: "2026-05-15T10:00:00Z",
+    galleryImages: ["/images/products/foods/dogs/pedigree-adult-chicken.png"],
+    about: "Pedigree Adult provides a nutritious meal with high-quality protein, dietary fibers for digestion, and essential fatty acids. Highly palatable, balanced recipe perfect for daily feeding.",
+    keyFeatures: [
+      "Balanced mineral ratios for strong teeth",
+      "Dietary fiber to promote healthy gut",
+      "Zinc and omega fatty acids for skin care"
+    ],
+    conditions: [
+      "Transition from old food gradually over a week",
+      "Keep bag in a dry, insect-free location"
+    ]
+  },
+  {
+    id: "royal-canin-maxi-puppy",
+    name: "Royal Canin Maxi Puppy",
+    description: "Premium tailor-made nutrition for large breed puppies (weight 26 to 44kg).",
+    category: "food",
+    image: "/images/products/foods/dogs/royal-canin-maxi-puppy.png",
+    
+    imageTone: "bg-orange-50/60",
+    action: "details",
+    price: 3200,
+    brand: "Royal Canin",
+    age: "Puppy",
+    dietaryRequirements: "Digestive Security",
+    createdAt: "2026-05-27T12:00:00Z",
+    galleryImages: ["/images/products/foods/dogs/royal-canin-maxi-puppy.png"],
+    about: "Designed specifically to support the long growth period of large breed puppies. Formulated with elite proteins and prebiotics to ensure digestive safety and help build strong bones and joints.",
+    keyFeatures: [
+      "Supports natural immune system defenses",
+      "Optimal energy level for large breed growth",
+      "Highly digestible protein (L.I.P) for gut safety"
+    ],
+    conditions: [
+      "Follow exact large breed puppy feeding tables",
+      "Seal bag properly to preserve taste"
+    ]
+  },
+  {
+    id: "royal-canin-adult-medium",
+    name: "Royal Canin Adult Medium Breed",
+    description: "Tailored daily nutrition for medium breed adult dogs (weight 11 to 25kg).",
+    category: "food",
+    image: "/images/products/foods/dogs/royal-canin-adult-medium.png",
+    
+    imageTone: "bg-orange-50/60",
+    action: "details",
+    price: 3400,
+    brand: "Royal Canin",
+    age: "Adult",
+    dietaryRequirements: "Coat & Skin Protection",
+    createdAt: "2026-05-27T13:00:00Z",
+    galleryImages: ["/images/products/foods/dogs/royal-canin-adult-medium.png"],
+    about: "Helps promote natural defenses of medium breed dogs. Enriched with Omega 3 fatty acids (EPA-DHA) to maintain healthy skin barrier and high coat luster.",
+    keyFeatures: [
+      "Helps maintain natural strong defenses",
+      "High digestibility with specialized fiber blend",
+      "Enriched with EPA and DHA skin protectors"
+    ],
+    conditions: [
+      "Keep fresh drinking water accessible",
+      "Adjust daily dosage based on activity level"
+    ]
+  },
+  {
+    id: "nd-puppy-formula",
+    name: "N&D Puppy Pumpkin Formula",
+    description: "Super premium grain-free, pumpkin, chicken, and pomegranate recipe for puppies.",
+    category: "food",
+    image: "/images/products/foods/dogs/nd-puppy-formula.png",
+    
+    imageTone: "bg-orange-50/60",
+    action: "details",
+    price: 2400,
+    brand: "N&D",
+    age: "Puppy",
+    dietaryRequirements: "96% Animal Protein, Grain-Free",
+    createdAt: "2026-05-27T14:00:00Z",
+    galleryImages: ["/images/products/foods/dogs/nd-puppy-formula.png"],
+    about: "Natural & Delicious Ancestral Grain formula is a low glycemic index, ultra premium pet food. Formulated with pumpkin, a soluble fiber source that supports gut health, and organic pomegranate extract.",
+    keyFeatures: [
+      "96% high-quality protein from animal sources",
+      "100% grain-free with low glycemic index",
+      "Rich in natural antioxidants and pumpkin fibers",
+      "Promotes excellent immune system health"
+    ],
+    conditions: [
+      "Ideal for puppies and pregnant/lactating dogs",
+      "Store in a dark, dry pantry shelf"
+    ]
+  },
+  {
+    id: "nd-adult-formula",
+    name: "N&D Adult Ocean Formula",
+    description: "Super premium grain-free cod, pumpkin, and cantaloupe recipe for active adult dogs.",
+    category: "food",
+    image: "/images/products/foods/dogs/nd-adult-formula.png",
+    
+    imageTone: "bg-orange-50/60",
+    action: "details",
+    price: 2600,
+    brand: "N&D",
+    age: "Adult",
+    dietaryRequirements: "Grain-Free Ocean Fish",
+    createdAt: "2026-05-27T15:00:00Z",
+    galleryImages: ["/images/products/foods/dogs/nd-adult-formula.png"],
+    about: "Crafted with wild caught cod fish and fresh pumpkin fibers. Excellent for dogs with food sensitivities or allergies to poultry. Rich in highly bioavailable Omega 3.",
+    keyFeatures: [
+      "Ocean cod as single protein source",
+      "Grain-free, gluten-free, low-carb formula",
+      "Pumpkin added for gentle digestive health",
+      "Rich in natural vitamins and cantaloupe melon"
+    ],
+    conditions: [
+      "Transition over 7-10 days to avoid dietary stress",
+      "Always serve in a clean feeding bowl"
+    ]
+  },
+
+  // Cat Foods
+  {
+    id: "whiskas-tuna",
+    name: "Whiskas Tuna Adult Cat Food",
+    description: "Delicious dry cat food kibbles with tuna flavor for adult cats.",
+    category: "food",
+    image: "/images/products/foods/cats/whiskas-tuna.png",
+    
+    imageTone: "bg-blue-50/60",
+    action: "details",
+    price: 680,
+    brand: "Whiskas",
+    age: "Adult",
+    dietaryRequirements: "Urinary Tract Health",
+    createdAt: "2026-05-27T16:00:00Z",
+    galleryImages: ["/images/products/foods/cats/whiskas-tuna.png"],
+    about: "Specially formulated with high quality real tuna to give cats a highly nutritious and tasty meal. Made with active crunchy kibbles that help clean teeth as they chew.",
+    keyFeatures: [
+      "Tuna-flavored dry food with real protein",
+      "Supports strong eyesight via active taurine",
+      "Balanced mineral levels for healthy urinary tract",
+      "Packed with zinc and omega fatty acids"
+    ],
+    conditions: [
+      "Transition slowly by mixing with previous food",
+      "Ensure fresh drinking water is always nearby"
+    ]
+  },
+  {
+    id: "whiskas-ocean-fish",
+    name: "Whiskas Ocean Fish Adult Cat Food",
+    description: "Complete and balanced dry food with delicious ocean fish recipe.",
+    category: "food",
+    image: "/images/products/foods/cats/whiskas-ocean-fish.png",
+    
+    imageTone: "bg-blue-50/60",
+    action: "details",
+    price: 700,
+    brand: "Whiskas",
+    age: "Adult",
+    dietaryRequirements: "Shiny Skin & Coat",
+    createdAt: "2026-05-27T17:00:00Z",
+    galleryImages: ["/images/products/foods/cats/whiskas-ocean-fish.png"],
+    about: "Whiskas Ocean Fish dry food is prepared with fresh fish ingredients, delivering vitamins, mineral salts, and high protein to keep your feline active and glowing.",
+    keyFeatures: [
+      "Real ocean fish flavor that felines love",
+      "Enriched with Vitamin A and Taurine",
+      "Complete nutritional formula for adult cats"
+    ],
+    conditions: [
+      "Keep bag sealed to maintain quality and crunchiness"
+    ]
+  },
+  {
+    id: "whiskas-chicken",
+    name: "Whiskas Chicken Adult Cat Food",
+    description: "Savory chicken kibble formula with delicious pocket textures.",
+    category: "food",
+    image: "/images/products/foods/cats/whiskas-chicken.png",
+    
+    imageTone: "bg-blue-50/60",
+    action: "details",
+    price: 660,
+    brand: "Whiskas",
+    age: "Adult",
+    dietaryRequirements: "Digestive Balance",
+    createdAt: "2026-05-27T18:00:00Z",
+    galleryImages: ["/images/products/foods/cats/whiskas-chicken.png"],
+    about: "Provides balanced, premium nutrition including animal protein from chicken. Pockets are filled with flavorful chicken cream to tempt even picky cats.",
+    keyFeatures: [
+      "Tasty pockets filled with real chicken cream",
+      "Balanced minerals for bladder protection",
+      "Gluten-free protein mix"
+    ],
+    conditions: [
+      "Divide daily food into 2 distinct meals"
+    ]
+  },
+  {
+    id: "me-o-tuna",
+    name: "Me-O Tuna Adult Cat Food",
+    description: "High nutrition tuna flavor dry cat food.",
+    category: "food",
+    image: "/images/products/foods/cats/me-o-tuna.png",
+    
+    imageTone: "bg-blue-50/60",
+    action: "details",
+    price: 520,
+    brand: "Me-O",
+    age: "Adult",
+    dietaryRequirements: "Eye Care & Vision",
+    createdAt: "2026-05-27T19:00:00Z",
+    galleryImages: ["/images/products/foods/cats/me-o-tuna.png"],
+    about: "Me-O Tuna dry cat food is highly digestible and packed with taurine to maintain excellent eyesight, Vitamin C to boost immunity, and low sodium to manage blood pressure.",
+    keyFeatures: [
+      "Taurine added for optical development",
+      "Vitamin C to support defense system",
+      "Calcium, phosphorus, and vitamin D for strong bones"
+    ],
+    conditions: [
+      "Always provide a bowl of clean, fresh water"
+    ]
+  },
+  {
+    id: "me-o-mackerel",
+    name: "Me-O Mackerel Adult Cat Food",
+    description: "Highly palatable mackerel dry cat food with low sodium.",
+    category: "food",
+    image: "/images/products/foods/cats/me-o-mackerel.png",
+    
+    imageTone: "bg-blue-50/60",
+    action: "details",
+    price: 540,
+    brand: "Me-O",
+    age: "Adult",
+    dietaryRequirements: "Low Sodium & Heart Protection",
+    createdAt: "2026-05-27T20:00:00Z",
+    galleryImages: ["/images/products/foods/cats/me-o-mackerel.png"],
+    about: "Features savory mackerel flavor that cats naturally crave. Highly bioavailable proteins support cardiac health, muscle tone, and a robust physical constitution.",
+    keyFeatures: [
+      "Delicious mackerel flavor, highly palatable",
+      "Low sodium formula for cardiac health",
+      "Prevents risks of FLUTD (feline lower urinary tract disease)"
+    ],
+    conditions: [
+      "Keep stored in airtight containers away from moisture"
+    ]
+  },
+  {
+    id: "me-o-seafood",
+    name: "Me-O Seafood Adult Cat Food",
+    description: "Mixed ocean seafood dry kibbles for active felines.",
+    category: "food",
+    image: "/images/products/foods/cats/me-o-seafood.png",
+    
+    imageTone: "bg-blue-50/60",
+    action: "details",
+    price: 580,
+    brand: "Me-O",
+    age: "Adult",
+    dietaryRequirements: "Immune Boost",
+    createdAt: "2026-05-27T21:00:00Z",
+    galleryImages: ["/images/products/foods/cats/me-o-seafood.png"],
+    about: "Packed with organic shrimp, fish, and squid flavor notes. Provides a rich source of calcium, zinc, and natural proteins to keep adult cats energetic.",
+    keyFeatures: [
+      "Vibrant mixed seafood recipe",
+      "Strengthens immune system defense",
+      "High palatability for adult cats"
+    ],
+    conditions: [
+      "Adjust daily dosage based on cat's weight"
+    ]
+  },
+  {
+    id: "me-o-persian-formula",
+    name: "Me-O Persian Adult Cat Food",
+    description: "Specialized formula with anti-hairball fibers for Persian cats.",
+    category: "food",
+    image: "/images/products/foods/cats/me-o-persian-formula.png",
+    
+    imageTone: "bg-blue-50/60",
+    action: "details",
+    price: 780,
+    brand: "Me-O",
+    age: "Adult",
+    dietaryRequirements: "Hairball Control, Persian Breed Specific",
+    createdAt: "2026-05-27T22:00:00Z",
+    galleryImages: ["/images/products/foods/cats/me-o-persian-formula.png"],
+    about: "Persian cats have long coats prone to hairball formation. This formula contains specialized natural fibers to safely pass ingested hair and nourish their long coat.",
+    keyFeatures: [
+      "Special fiber mix to prevent hairballs",
+      "Enriched with Omega 3 and 6 for long coats",
+      "Keeps digestive tract healthy and flowing"
+    ],
+    conditions: [
+      "Highly recommended for long-haired cats over 1 year",
+      "Store in a clean and dry place"
+    ]
+  },
+
+  // --- HEALTHCARE & SUPPLEMENTS ---
+  // Himalaya Products
+  {
+    id: "himalaya-erina-puppy-shampoo",
+    name: "Himalaya Erina Puppy Shampoo",
+    description: "Gentle daily puppy shampoo containing natural neem and eucalyptus oils.",
     category: "supplements",
-    image: "/images/multivitamin.png",
-    imageFit: "contain",
+    image: "/images/products/medicines/himalaya-erina-puppy-shampoo.png",
+    
+    action: "details",
+    price: 250,
+    brand: "Himalaya Pet",
+    age: "Puppy",
+    dietaryRequirements: "Coat Care & Hygiene",
+    createdAt: "2026-05-27T23:00:00Z",
+    galleryImages: ["/images/products/medicines/himalaya-erina-puppy-shampoo.png"],
+    about: "Himalaya Erina Puppy Shampoo is a soap-free, mild skin cleanser containing natural herbs like neem and eucalyptus. Cleanses gently without drying out a puppy's sensitive skin.",
+    keyFeatures: [
+      "Soap-free, non-irritant daily formula",
+      "Contains organic neem & eucalyptus extracts",
+      "Fights odor and skin dryness effectively"
+    ],
+    conditions: [
+      "Apply to wet coat, massage for 5 mins, and rinse thoroughly",
+      "Avoid contact with puppy's eyes and ears"
+    ]
+  },
+  {
+    id: "himalaya-erina-coat-cleanser",
+    name: "Himalaya Erina Coat Cleanser",
+    description: "Soothes dry skin, controls dandruff, and leaves coat glossy.",
+    category: "supplements",
+    image: "/images/products/medicines/himalaya-erina-coat-cleanser.png",
+    
+    action: "details",
+    price: 280,
+    brand: "Himalaya Pet",
+    age: "All Ages",
+    dietaryRequirements: "Anti-Dandruff & Cleansing",
+    createdAt: "2026-05-27T23:30:00Z",
+    galleryImages: ["/images/products/medicines/himalaya-erina-coat-cleanser.png"],
+    about: "Cleanses, nourishes, and protects the skin barrier. Fights seasonal dandruff and controls excessive shedding by strengthening coat roots.",
+    keyFeatures: [
+      "Prevents skin scaling and dandruff",
+      "Strengthens hair roots to stop shedding",
+      "Promotes a soft and shiny coat"
+    ],
+    conditions: [
+      "Use once every 10 days for optimal coat quality"
+    ]
+  },
+  {
+    id: "himalaya-erina-tick-control",
+    name: "Himalaya Erina Tick Control Shampoo",
+    description: "Highly effective herbal shampoo that controls ticks, fleas, and lice.",
+    category: "supplements",
+    image: "/images/products/medicines/himalaya-erina-tick-control.png",
+    
+    action: "details",
+    price: 320,
+    brand: "Himalaya Pet",
+    age: "All Ages",
+    dietaryRequirements: "Tick & Flea Defense",
+    createdAt: "2026-05-27T23:45:00Z",
+    galleryImages: ["/images/products/medicines/himalaya-erina-tick-control.png"],
+    about: "Erina Tick Control uses natural active ingredients to eliminate external ectoparasites. Gentle on the skin while being tough on ticks, fleas, and lice.",
+    keyFeatures: [
+      "Kills and repels ticks, fleas, and lice",
+      "Prevents skin infections and itching",
+      "Soothes irritated skin caused by tick bites"
+    ],
+    conditions: [
+      "Wet coat, lather well, leave for 10-15 mins, rinse with warm water",
+      "Do not use on puppies under 12 weeks of age"
+    ]
+  },
+  {
+    id: "himalaya-conditioner",
+    name: "Himalaya Erina Conditioner",
+    description: "Deep conditioning herbal formula for a silky-smooth coat.",
+    category: "supplements",
+    image: "/images/products/medicines/himalaya-conditioner.png",
+    
+    action: "details",
+    price: 290,
+    brand: "Himalaya Pet",
+    age: "All Ages",
+    dietaryRequirements: "Deep Conditioning",
+    createdAt: "2026-05-27T23:50:00Z",
+    galleryImages: ["/images/products/medicines/himalaya-conditioner.png"],
+    about: "Enriched with hair-softening natural herbs, it detangles matted hair, reduces static, and leaves a beautiful sweet fragrance.",
+    keyFeatures: [
+      "Detangles thick hair and coats easily",
+      "Leaves coat incredibly soft, glossy, and smooth",
+      "Pleasant lasting herbal fragrance"
+    ],
+    conditions: [
+      "Apply post-shampoo, leave for 3 mins, and wash off"
+    ]
+  },
+
+  // Sprays & Hygiene
+  {
+    id: "dual-action-spray",
+    name: "Dual Action Hygiene Spray",
+    description: "Combats skin pathogens and sanitizes minor wounds on pets.",
+    category: "supplements",
+    image: "/images/products/medicines/sprays/dual-action-spray.png",
+    
+    action: "details",
+    price: 380,
+    brand: "PetPlus",
+    age: "All Ages",
+    dietaryRequirements: "Skin Hygiene",
+    createdAt: "2026-05-28T00:00:00Z",
+    galleryImages: ["/images/products/medicines/sprays/dual-action-spray.png"],
+    about: "A dual action skin spray that protects against bacterial and fungal infections. Non-stinging, safe for licking, and speeds up natural healing.",
+    keyFeatures: [
+      "Antiseptic and antifungal defense spray",
+      "Soothing, non-stinging formulation",
+      "100% safe if licked by pets"
+    ],
+    conditions: [
+      "Spray directly on affected area 2-3 times daily"
+    ]
+  },
+  {
+    id: "anti-tick-spray",
+    name: "Anti Tick Protection Spray",
+    description: "Fast-acting spray to control tick infestations instantly.",
+    category: "supplements",
+    image: "/images/products/medicines/sprays/anti-tick-spray.png",
+    
     action: "details",
     price: 450,
-    brand: "NutriPet",
+    brand: "TickBlock",
     age: "All Ages",
-    dietaryRequirements: "Daily Supplement",
-    createdAt: "2026-05-27T11:00:00Z",
-    galleryImages: ["/images/multivitamin.png"],
-    about: "NutriPet Premium Multivitamin is a comprehensive daily supplement designed to fill nutritional gaps in your pet's diet. It supports optical health, shiny coats, robust energy levels, and strong immune defense. Formulated as a delicious syrup, pets absolute love the taste, making administration hassle-free.",
+    dietaryRequirements: "Tick Eliminator",
+    createdAt: "2026-05-28T00:10:00Z",
+    galleryImages: ["/images/products/medicines/sprays/anti-tick-spray.png"],
+    about: "Quickly kills adult ticks and fleas on contact. Forms a protective shield on the coat to prevent re-infestation for up to 30 days.",
     keyFeatures: [
-      "18 essential vitamins, minerals, and amino acids",
-      "Boosts daily energy levels and stamina",
-      "Supports optical, cardiac, and liver functions",
-      "Liquid formula for fast, easy absorption",
-      "Highly palatable flavor that pets enjoy",
-      "Recommended by veterinarians nationwide",
+      "Kills ticks & fleas on contact instantly",
+      "Provides 30-day residual protection",
+      "Easy spray nozzle for thick coats"
     ],
     conditions: [
-      "Suitable for dogs, cats, and puppies over 8 weeks",
-      "Give directly or mix thoroughly with food",
-      "Dosing: 5ml per 10kg body weight daily",
-      "Shake well before each use",
-      "Store in a cool place away from direct sunlight",
-      "Do not exceed recommended daily allowance",
-    ],
+      "Spray over entire body avoiding eyes and nose, rub against hair flow"
+    ]
   },
   {
-    id: "calcium-bone-joint",
-    name: "Calcium & Joint Boost Tablets",
+    id: "flea-tick-spray",
+    name: "Flea & Tick Defense Spray",
+    description: "Herbal spray to repel ticks, fleas, and mosquitos naturally.",
+    category: "supplements",
+    image: "/images/products/medicines/sprays/flea-tick-spray.png",
+    
+    action: "details",
+    price: 390,
+    brand: "EcoPet",
+    age: "All Ages",
+    dietaryRequirements: "Natural Repellent",
+    createdAt: "2026-05-28T00:20:00Z",
+    galleryImages: ["/images/products/medicines/sprays/flea-tick-spray.png"],
+    about: "A natural herbal shield containing lemongrass and citronella oil. Extremely safe for daily outdoor protection.",
+    keyFeatures: [
+      "100% natural herbal ingredients",
+      "Repels fleas, ticks, and mosquitos",
+      "Safe for daily indoor/outdoor use"
+    ],
+    conditions: [
+      "Spray lightly before going out for daily walks"
+    ]
+  },
+  {
+    id: "pet-odour-remover",
+    name: "Pet Odour Eliminator Spray",
+    description: "Eliminates tough pet odors and sanitizes home spaces.",
+    category: "supplements",
+    image: "/images/products/medicines/sprays/pet-odour-remover.png",
+    
+    action: "details",
+    price: 350,
+    brand: "FreshPet",
+    age: "All Ages",
+    dietaryRequirements: "Deodorizer & Sanitizer",
+    createdAt: "2026-05-28T00:30:00Z",
+    galleryImages: ["/images/products/medicines/sprays/pet-odour-remover.png"],
+    about: "Breaks down odor molecules at the source instead of masking them. Safe to use directly on pet bedding, rugs, and furniture.",
+    keyFeatures: [
+      "Bio-enzymatic odor-destroying action",
+      "Leaves a refreshing lavender fragrance",
+      "Safe around pets and kids"
+    ],
+    conditions: [
+      "Spray on carpets, kennels, or pet bedding"
+    ]
+  },
+
+  // Supplements
+  {
+    id: "calcium-tablets",
+    name: "Calcium & Joint Tablets",
     description: "High potency calcium tablets with Glucosamine & Chondroitin.",
     category: "supplements",
-    image: "/images/calcium.png",
-    imageFit: "contain",
+    image: "/images/products/medicines/supplements/calcium-tablets.png",
+    
     action: "details",
     price: 650,
     brand: "Himalaya Pet",
     age: "Adult & Senior",
     dietaryRequirements: "Bone & Joint Support",
     createdAt: "2026-05-27T12:00:00Z",
-    galleryImages: ["/images/calcium.png"],
-    about: "Himalaya Calcium Joint Boost is designed to protect bone integrity and joint flexibility. With the goodness of natural calcium sources and added glucosamine, it helps rebuild cartilage, reduce joint soreness, and enhance mobility in active, aging, or heavy-breed dogs.",
+    galleryImages: ["/images/products/medicines/supplements/calcium-tablets.png"],
+    about: "Formulated to protect skeletal bone density and maintain joint flexibility. Added glucosamine supports cartilage production in heavy breed puppies and aging dogs.",
     keyFeatures: [
-      "Highly bioavailable calcium and phosphorus",
-      "Enriched with Glucosamine & Chondroitin",
-      "Prevents joint stiffness and cartilage wear",
-      "Highly recommended for large breeds & seniors",
-      "Natural ingredients, free of synthetic toxins",
-      "Convenient tablet form, easily crushed",
+      "Bioavailable calcium and phosphorus",
+      "Glucosamine & Chondroitin joint boosters",
+      "Reduces joint stiffness and wear"
     ],
     conditions: [
-      "Excellent for adult dogs, seniors, and large breeds",
       "Tablet can be fed directly or crushed into food",
-      "Dose: 1 tablet per 10kg body weight daily",
-      "Ensure pet has access to fresh water",
-      "Store in a dry, airtight bottle",
-      "Keep out of reach of children",
-    ],
+      "Dose: 1 tablet per 10kg body weight daily"
+    ]
   },
+  {
+    id: "multivitamin-tablets",
+    name: "Multivitamin Wellness Tablets",
+    description: "Daily essential multivitamin syrup/tablets to boost vitality and immunity.",
+    category: "supplements",
+    image: "/images/products/medicines/supplements/multivitamin-tablets.png",
+    
+    action: "details",
+    price: 450,
+    brand: "NutriPet",
+    age: "All Ages",
+    dietaryRequirements: "Daily Supplement",
+    createdAt: "2026-05-27T11:00:00Z",
+    galleryImages: ["/images/products/medicines/supplements/multivitamin-tablets.png"],
+    about: "NutriPet Premium Multivitamin is a comprehensive daily supplement designed to support optical health, coat gloss, energy levels, and overall immune response.",
+    keyFeatures: [
+      "18 essential vitamins & trace minerals",
+      "Fast liquid/tablet absorption",
+      "Improves daily energy, health, and coat gloss"
+    ],
+    conditions: [
+      "Dose: 5ml or 1 tablet per 10kg body weight daily",
+      "Store in a cool dry cabinet"
+    ]
+  },
+  {
+    id: "joint-care-supplements",
+    name: "Joint Care & Mobility Supplements",
+    description: "Advanced formula to repair joint tissue and reduce hip dysplasia symptoms.",
+    category: "supplements",
+    image: "/images/products/medicines/supplements/joint-care.png",
+    
+    action: "details",
+    price: 750,
+    brand: "FlexiJoint",
+    age: "Senior & Adult",
+    dietaryRequirements: "Advanced Joint Care",
+    createdAt: "2026-05-28T01:00:00Z",
+    galleryImages: ["/images/products/medicines/supplements/joint-care.png"],
+    about: "Contains premium MSM and Boswellia extract to manage pain and inflammation in dogs suffering from arthritis or hip dysplasia.",
+    keyFeatures: [
+      "MSM and Boswellia anti-inflammatory active",
+      "Aids in rebuilding worn cartilage",
+      "Highly recommended for seniors and giant breeds"
+    ],
+    conditions: [
+      "Consult vet for dosage during initial loading phase"
+    ]
+  },
+  {
+    id: "growth-supplements",
+    name: "Pet Growth & Immunity Supplements",
+    description: "Enriched with amino acids and growth promoters for weak puppies.",
+    category: "supplements",
+    image: "/images/products/medicines/supplements/growth-supplement.png",
+    
+    action: "details",
+    price: 480,
+    brand: "GrowFast",
+    age: "Puppy",
+    dietaryRequirements: "Skeletal Growth & Muscle Tone",
+    createdAt: "2026-05-28T01:10:00Z",
+    galleryImages: ["/images/products/medicines/supplements/growth-supplement.png"],
+    about: "A concentrated growth promoter enriched with L-lysine and critical amino acids to support optimal weight gain, muscle tone, and developmental milestones.",
+    keyFeatures: [
+      "Lysine and multi-amino acid booster",
+      "Promotes robust healthy skeletal development",
+      "Enhances natural nutrient absorption rate"
+    ],
+    conditions: [
+      "Mix with food once daily for puppies under 1 year"
+    ]
+  },
+
+  // --- ACCESSORIES SECTION ---
+  // Dog Accessories
+  {
+    id: "accessories-chain",
+    name: "Heavy-Duty Dog Chain",
+    description: "Rust-resistant chrome-plated steel leash chain for large breeds.",
+    category: "accessories",
+    image: "/images/products/accessories/dogs/dog-chain.png",
+    
+    action: "details",
+    price: 450,
+    brand: "IronHold",
+    createdAt: "2026-05-28T02:00:00Z",
+    galleryImages: ["/images/products/accessories/dogs/dog-chain.png"],
+    about: "A high-strength steel chain with welded links for security. Built to withstand strong pulls from heavy breeds without rusting or breaking.",
+    keyFeatures: [
+      "Welded chrome-plated steel links",
+      "100% rust-resistant security leash",
+      "Padded handle for owner comfort"
+    ],
+    conditions: [
+      "Inspect lock clasp regularly for wear"
+    ]
+  },
+  {
+    id: "accessories-leash",
+    name: "Comfort-Grip Dog Leash",
+    description: "Strong woven nylon leash with soft neoprene padded handle.",
+    category: "accessories",
+    image: "/images/products/accessories/dogs/dog-leash.png",
+    
+    action: "details",
+    price: 320,
+    brand: "TuffWalk",
+    createdAt: "2026-05-28T02:10:00Z",
+    galleryImages: ["/images/products/accessories/dogs/dog-leash.png"],
+    about: "Perfect for daily walks, this 5-foot nylon leash features highly visible reflective stitching for safe nighttime activities.",
+    keyFeatures: [
+      "Reflective safety threads for night walks",
+      "Comfortable neoprene padded grip handle",
+      "360-degree tangle-free metal clasp swivel"
+    ],
+    conditions: [
+      "Hand wash with mild detergent when dirty"
+    ]
+  },
+  {
+    id: "accessories-harness",
+    name: "Reflective Dog Harness",
+    description: "No-pull chest harness with adjustable security straps.",
+    category: "accessories",
+    image: "/images/products/accessories/dogs/dog-harness.png",
+    
+    action: "details",
+    price: 850,
+    brand: "FlexFit",
+    createdAt: "2026-05-28T02:20:00Z",
+    galleryImages: ["/images/products/accessories/dogs/dog-harness.png"],
+    about: "Distributes pulling pressure evenly across a dog's chest to prevent neck strain. Features dual leash attachment D-rings and breathable mesh lining.",
+    keyFeatures: [
+      "Ergonomic no-pull design protects trachea",
+      "Breathable cool mesh interior lining",
+      "Four adjustable straps for custom fit"
+    ],
+    conditions: [
+      "Measure dog's chest circumference before purchasing"
+    ]
+  },
+  {
+    id: "accessories-collar",
+    name: "Premium Padded Dog Collar",
+    description: "Durable, comfortable & stylish collar with name tag D-ring.",
+    category: "accessories",
+    image: "/images/products/accessories/dogs/dog-collar.png",
+    
+    action: "details",
+    price: 350,
+    brand: "PetPlus",
+    createdAt: "2026-05-23T10:00:00Z",
+    galleryImages: ["/images/products/accessories/dogs/dog-collar.png"],
+    about: "Made from high-density nylon with soft interior neoprene padding to protect neck fur. Features quick release buckle and reflective safety strip.",
+    keyFeatures: [
+      "High strength nylon structure",
+      "Quick release safety snap buckle",
+      "Reflective trim and interior soft neoprene lining"
+    ],
+    conditions: [
+      "Leave a 2-finger safety gap around dog's neck"
+    ]
+  },
+  {
+    id: "accessories-feeding-bowl",
+    name: "Stainless Steel Feeding Bowl",
+    description: "Double-walled rustproof steel bowl with non-slip rubber base.",
+    category: "accessories",
+    image: "/images/products/accessories/dogs/feeding-bowl.png",
+    
+    action: "details",
+    price: 280,
+    brand: "DishPro",
+    createdAt: "2026-05-28T02:30:00Z",
+    galleryImages: ["/images/products/accessories/dogs/feeding-bowl.png"],
+    about: "Hygiene-first stainless steel bowl that is easy to wash and completely dishwasher safe. Non-tip base prevents messy spills.",
+    keyFeatures: [
+      "High quality food-grade stainless steel",
+      "Non-slip silicon rubber rim bottom base",
+      "Dishwasher safe and bacteria resistant"
+    ],
+    conditions: [
+      "Clean daily to prevent food residue buildup"
+    ]
+  },
+  {
+    id: "accessories-water-bowl",
+    name: "Non-Slip Pet Water Bowl",
+    description: "Wide capacity splash-free water dish.",
+    category: "accessories",
+    image: "/images/products/accessories/dogs/water-bowl.png",
+    
+    action: "details",
+    price: 300,
+    brand: "DishPro",
+    createdAt: "2026-05-28T02:40:00Z",
+    galleryImages: ["/images/products/accessories/dogs/water-bowl.png"],
+    about: "Designed to keep dog ears dry while drinking. Wide silicon non-skid base keeps the water bowl firmly in place on any tiled floor.",
+    keyFeatures: [
+      "Anti-splash wide rim structure design",
+      "Solves dry ear issue for floppy breeds",
+      "Heavy base prevents tipping and slides"
+    ],
+    conditions: [
+      "Change drinking water twice daily"
+    ]
+  },
+
+  // Toys
+  {
+    id: "accessories-chew-toy",
+    name: "Durable Rubber Chew Toy",
+    description: "Tough natural rubber toy designed for aggressive chewers.",
+    category: "accessories",
+    image: "/images/products/accessories/toys/chew-toy.png",
+    
+    action: "details",
+    price: 390,
+    brand: "KONG",
+    createdAt: "2026-05-28T02:50:00Z",
+    galleryImages: ["/images/products/accessories/toys/chew-toy.png"],
+    about: "Made of 100% natural thick rubber. Features a hollow core that can be stuffed with treats or peanut butter to keep dogs mentally engaged.",
+    keyFeatures: [
+      "Extremely tough natural black rubber",
+      "Hollow core pocket for treat stuffing",
+      "Massages gums and cleans teeth as they chew"
+    ],
+    conditions: [
+      "Supervise pets during initial chewing sessions"
+    ]
+  },
+  {
+    id: "accessories-rope-toy",
+    name: "Cotton Knotted Rope Toy",
+    description: "Strong & safe cotton woven fibers for dental cleaning and hours of tug-of-war fun.",
+    category: "accessories",
+    image: "/images/products/accessories/toys/rope-toy.png",
+    
+    action: "details",
+    price: 150,
+    brand: "KONG",
+    createdAt: "2026-05-05T10:00:00Z",
+    galleryImages: ["/images/products/accessories/toys/rope-toy.png"],
+    about: "Tightly knotted 100% cotton threads act as natural dental floss, scraping off plaque and massaging gums while playing energetic fetch and tug-of-war.",
+    keyFeatures: [
+      "100% organic cotton woven fibers",
+      "Scrapes plaque off teeth during active play",
+      "Knotted ends for solid grip control"
+    ],
+    conditions: [
+      "Discard rope immediately if fibers start to unravel"
+    ]
+  },
+  {
+    id: "accessories-squeaky-toy",
+    name: "Squeaky Plush Play Toy",
+    description: "Soft plush toy with integrated inner puncture-proof squeaker.",
+    category: "accessories",
+    image: "/images/products/accessories/toys/squeaky-toy.png",
+    
+    action: "details",
+    price: 240,
+    brand: "ToyJoy",
+    createdAt: "2026-05-28T03:00:00Z",
+    galleryImages: ["/images/products/accessories/toys/squeaky-toy.png"],
+    about: "Keep puppies entertained with interactive high-pitch squeaks. Double stitched seams prevent easy tearing during gentle play.",
+    keyFeatures: [
+      "Internal loud puncture-proof squeaker",
+      "Double stitched protective layer edges",
+      "Soft and cozy plush for comforting cuddling"
+    ],
+    conditions: [
+      "Not recommended for aggressive, heavy chewers"
+    ]
+  },
+  {
+    id: "accessories-interactive-toy",
+    name: "Smart Treat-Dispensing Toy",
+    description: "Puzzles treat ball that stimulates brain and slows down eating.",
+    category: "accessories",
+    image: "/images/products/accessories/toys/interactive-toy.png",
+    
+    action: "details",
+    price: 490,
+    brand: "BrainyPet",
+    createdAt: "2026-05-28T03:10:00Z",
+    galleryImages: ["/images/products/accessories/toys/interactive-toy.png"],
+    about: "Keeps dogs mentally alert by challenging them to roll the ball to release treats. Perfect solution for reducing separation anxiety.",
+    keyFeatures: [
+      "Adjustable difficulty treat gate slider",
+      "Provides excellent mental training and exercise",
+      "Slows down fast, unhealthy gulping habits"
+    ],
+    conditions: [
+      "Fill only with dry, round kibble shapes"
+    ]
+  },
+
+  // Bones & Treats
+  {
+    id: "accessories-rawhide-bone",
+    name: "Natural Rawhide Bones (Pack of 4)",
+    description: "Pressed natural beef hide bones that promote strong jaws.",
+    category: "accessories",
+    image: "/images/products/accessories/treats/rawhide-bone.png",
+    
+    action: "details",
+    price: 260,
+    brand: "BarkTreats",
+    createdAt: "2026-05-28T03:20:00Z",
+    galleryImages: ["/images/products/accessories/treats/rawhide-bone.png"],
+    about: "Keeps puppies occupied for hours while fulfilling their natural urge to chew. Scrapes away tartar buildup effectively.",
+    keyFeatures: [
+      "100% natural premium pressed beef hide",
+      "Long-lasting chew, jaw muscle strengthening",
+      "Reduces destructive chewing on furniture"
+    ],
+    conditions: [
+      "Supervise chew; replace when it becomes small enough to swallow whole"
+    ]
+  },
+  {
+    id: "accessories-dental-chews",
+    name: "Daily Dental Care Chews",
+    description: "Edible dental treats that fight bad breath and plaque.",
+    category: "accessories",
+    image: "/images/products/accessories/treats/dental-chew.png",
+    
+    action: "details",
+    price: 380,
+    brand: "FreshBreath",
+    createdAt: "2026-05-28T03:30:00Z",
+    galleryImages: ["/images/products/accessories/treats/dental-chew.png"],
+    about: "Specially textured to clean hard-to-reach teeth down to the gumline. Delicious minty flavor freshens bad dog breath instantly.",
+    keyFeatures: [
+      "Toothbrush shape texture scrapes tartar",
+      "Refreshing herbal minty flavor",
+      "Highly digestible starch-based recipe"
+    ],
+    conditions: [
+      "Feed maximum 1 dental stick per day"
+    ]
+  },
+  {
+    id: "accessories-training-treats",
+    name: "Real Meat Training Treats",
+    description: "Bite-sized soft chicken treats perfect for training sessions.",
+    category: "accessories",
+    image: "/images/products/accessories/treats/training-treat.png",
+    
+    action: "details",
+    price: 220,
+    brand: "SmartPup",
+    createdAt: "2026-05-28T03:40:00Z",
+    galleryImages: ["/images/products/accessories/treats/training-treat.png"],
+    about: "Extremely low-calorie bite treats packed with high motivation real meat flavor. Ideal for reward-based clicker training.",
+    keyFeatures: [
+      "Made with real dehydrated chicken meat",
+      "Under 3 calories per reward bite treat",
+      "Resealable packet preserves fresh aroma"
+    ],
+    conditions: [
+      "Reduce daily dinner portion slightly if training heavily"
+    ]
+  },
+
+  // Cages
+  {
+    id: "accessories-dog-crate",
+    name: "Foldable Metal Dog Crate",
+    description: "Double-door wire crate with leak-proof removable plastic pan.",
+    category: "accessories",
+    image: "/images/products/accessories/cages/dog-crate.png",
+    
+    action: "details",
+    price: 2800,
+    brand: "SafeKeep",
+    createdAt: "2026-05-28T03:50:00Z",
+    galleryImages: ["/images/products/accessories/cages/dog-crate.png"],
+    about: "Safe wire crate for crate-training puppies. Folds flat easily for storage or car transport. Slide-out bottom tray makes cleanup simple.",
+    keyFeatures: [
+      "Secure double-door latches with safety slide",
+      "Slide-out removable leak-proof plastic tray",
+      "Folds completely flat, portable handle"
+    ],
+    conditions: [
+      "Place a cozy blanket inside to make it welcoming"
+    ]
+  },
+  {
+    id: "accessories-puppy-playpen",
+    name: "Indoor/Outdoor Puppy Playpen",
+    description: "8-panel heavy metal wire enclosure play pen.",
+    category: "accessories",
+    image: "/images/products/accessories/cages/puppy-play-pen.png",
+    
+    action: "details",
+    price: 3200,
+    brand: "SafeKeep",
+    createdAt: "2026-05-28T04:00:00Z",
+    galleryImages: ["/images/products/accessories/cages/puppy-play-pen.png"],
+    about: "Provides a safe, spacious bounded play area for active puppies indoors or in gardens. Setup takes less than a minute.",
+    keyFeatures: [
+      "Spacious 8-panel steel configurations",
+      "Rust-resistant finish paint coat protection",
+      "Easy walk-through door with latch locks"
+    ],
+    conditions: [
+      "Do not leave puppies unattended for long durations outdoors"
+    ]
+  },
+  {
+    id: "accessories-bird-cage",
+    name: "Spacious Dome-Top Bird Cage",
+    description: "Premium iron bird cage with feeder cups and wooden perches.",
+    category: "accessories",
+    image: "/images/products/accessories/cages/bird-cage.png",
+    
+    action: "details",
+    price: 2400,
+    brand: "Aviary Basics",
+    createdAt: "2026-05-28T04:10:00Z",
+    galleryImages: ["/images/products/accessories/cages/bird-cage.png"],
+    about: "Tabletop dome bird cage designed for budgies, lovebirds, and cockatiels. Removable slide tray facilitates clean daily paper changes.",
+    keyFeatures: [
+      "Rustproof non-toxic wire finish painting",
+      "Includes 2 interior wooden perches and cups",
+      "Bottom slide-out metal litter cleaning tray"
+    ],
+    conditions: [
+      "Sanitize cage completely once a week"
+    ]
+  },
+  {
+    id: "accessories-travel-carrier",
+    name: "Airline-Approved Travel Carrier",
+    description: "Hard shell plastic pet carrier with ventilation vents.",
+    category: "accessories",
+    image: "/images/products/accessories/cages/travel-carrier.png",
+    
+    action: "details",
+    price: 1900,
+    brand: "SkyTravel",
+    createdAt: "2026-05-28T04:20:00Z",
+    galleryImages: ["/images/products/accessories/cages/travel-carrier.png"],
+    about: "Safe and secure carrier built with impact-resistant plastic. Complies with commercial airline cargo/cabin specifications.",
+    keyFeatures: [
+      "Ventilation grates on all four sides",
+      "Secure spring-loaded metal door latch lock",
+      "Top folding handle for comfortable transport"
+    ],
+    conditions: [
+      "Ensure pet can stand and turn around comfortably inside"
+    ]
+  }
 ];
 
 export const navItems = ["Home", "Pets", "Products", "Services", "Gallery", "Contact"];
