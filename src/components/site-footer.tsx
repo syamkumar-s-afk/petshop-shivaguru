@@ -92,7 +92,7 @@ export function SiteFooter() {
             <p>Copyright 2026 Exotic Pets World Pollachi. All rights reserved.</p>
             <p>Made with care for pets and their people.</p>
           </div>
-          <div className="mt-2 md:mt-0">
+          <div className="mt-2 md:mt-0 md:pr-24 lg:pr-28">
             <a
               href="https://www.blitzsolutions.online/"
               target="_blank"
