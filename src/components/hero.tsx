@@ -78,7 +78,7 @@ function CategoryMarquee({ activeCategory, className, onCategoryChange }: Catego
 }
 
 const heroSlides = [
-  "/images/exotic_birds_banner.png",
+  "/images/exotic_pets_banner.png",
   "/images/happy_puppies_banner.png",
   "/images/premium_food_banner.png",
   "/images/pet_wellness_banner.png",
