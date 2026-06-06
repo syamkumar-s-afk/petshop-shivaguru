@@ -79,8 +79,8 @@ function CategoryMarquee({ activeCategory, className, onCategoryChange }: Catego
 
 const heroSlides = [
   "/images/exotic_pets_banner.png",
-  "/images/happy_puppies_banner.png",
   "/images/premium_food_banner.png",
+  "/images/happy_puppies_banner.png",
   "/images/pet_wellness_banner.png",
 ];
 
@@ -95,25 +95,12 @@ export function Hero({ activeCategory, onCategoryChange }: HeroProps) {
   }, []);
 
   return (
-    <section className="mb-6 md:mb-12 flex flex-col gap-4 lg:flex-row lg:gap-8">
-      <div className="flex w-full lg:w-1/2 flex-col justify-center">
-        <h1 className="mb-2 text-[20px] xs:text-[22px] sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#0a4112] whitespace-normal">
-          Available Pets & Products in Pollachi
-        </h1>
-        <p className="mb-4 md:mb-6 lg:mb-8 max-w-xl text-xs md:text-base text-gray-600">
-          Explore our wide range of exotic pets, premium pet food, accessories and supplies.
-        </p>
-
-        {/* Desktop Marquee */}
-        <CategoryMarquee
-          activeCategory={activeCategory}
-          className="hidden lg:flex"
-          onCategoryChange={onCategoryChange}
-        />
-      </div>
-
-      {/* Premium Clean Interactive Banner Slider */}
-      <div className="relative flex h-[220px] sm:h-[260px] w-full overflow-hidden rounded-3xl bg-forest-light lg:h-[320px] lg:w-1/2 group shadow-lg border border-gray-100">
+    <section className="mb-6 md:mb-12 flex flex-col gap-6 md:gap-8">
+      {/* Premium Clean Interactive Banner Slider - Full width with aspect ratio */}
+      <div 
+        className="relative w-full overflow-hidden rounded-3xl bg-forest-light group shadow-lg border border-gray-100"
+        style={{ aspectRatio: "1024/420" }}
+      >
         {heroSlides.map((slideSrc, index) => {
           const isActive = index === currentSlideIndex;
           return (
@@ -127,10 +114,10 @@ export function Hero({ activeCategory, onCategoryChange }: HeroProps) {
               <Image
                 alt="Exotic Pets Banner"
                 className="absolute inset-0 h-full w-full object-cover"
-                height={500}
+                height={420}
                 priority={index === 0}
                 src={slideSrc}
-                width={600}
+                width={1024}
               />
             </div>
           );
@@ -153,12 +140,23 @@ export function Hero({ activeCategory, onCategoryChange }: HeroProps) {
         </div>
       </div>
 
-      {/* Mobile Marquee (appears after banner) */}
-      <CategoryMarquee
-        activeCategory={activeCategory}
-        className="flex lg:hidden"
-        onCategoryChange={onCategoryChange}
-      />
+      {/* Info Section (Title + Description + Category Selection) */}
+      <div className="flex flex-col gap-4">
+        <div>
+          <h1 className="mb-2 text-[20px] xs:text-[22px] sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-[#0a4112] whitespace-normal">
+            Available Pets & Products in Pollachi
+          </h1>
+          <p className="max-w-xl text-xs md:text-base text-gray-600">
+            Explore our wide range of exotic pets, premium pet food, accessories and supplies.
+          </p>
+        </div>
+
+        <CategoryMarquee
+          activeCategory={activeCategory}
+          className="flex w-full"
+          onCategoryChange={onCategoryChange}
+        />
+      </div>
     </section>
   );
 }
