@@ -6,6 +6,7 @@ import { Location } from "@/components/location";
 import { Testimonial } from "@/components/testimonial";
 import { Faq } from "@/components/faq";
 import { Gallery } from "@/components/gallery";
+import { ShowcaseSectionsDemo } from "@/components/ShowcaseSectionsDemo";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <SiteHeader />
       <main className="mx-auto max-w-7xl px-4 py-8 md:px-8">
         <ProductCatalog />
+        <ShowcaseSectionsDemo />
         <Testimonial />
         <Gallery />
         <Location />

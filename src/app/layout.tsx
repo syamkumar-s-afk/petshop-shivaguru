@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Chatbot } from "@/components/chatbot";
+import Providers from "@/providers/Providers";
 
 export const metadata: Metadata = {
   title: "Exotic Pets World Pollachi",
@@ -16,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
-        {children}
-        <Chatbot />
+        <Providers>
+          {children}
+          <Chatbot />
+        </Providers>
       </body>
     </html>
   );
