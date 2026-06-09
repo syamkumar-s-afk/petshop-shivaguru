@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -30,6 +30,8 @@ import {
 import { productWhatsappHref, type Product } from "@/lib/site-data";
 import { ProductCard } from "@/components/product-card";
 import { addToCart } from "@/lib/cart-store";
+import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
+import { mapSiteProduct } from "@/repositories/ProductRepository";
 
 type ProductDetailContentProps = {
   product: Product;
@@ -226,6 +228,13 @@ export function ProductDetailContent({ product, relatedProducts }: ProductDetail
   const [isAdded, setIsAdded] = useState(false);
   const qualityBadges = productQualityBadges(product);
   const careProfile = productCareProfile(product);
+  const addRecentlyViewed = useRecentlyViewed((s) => s.addProduct);
+
+  // Track this product as recently viewed
+  useEffect(() => {
+    const showcaseProduct = mapSiteProduct(product);
+    addRecentlyViewed(showcaseProduct);
+  }, [product, addRecentlyViewed]);
 
   const images = useMemo(() => productCarouselImages(product), [product]);
   const displayedImageIndex = selectedImageIndex ?? 0;

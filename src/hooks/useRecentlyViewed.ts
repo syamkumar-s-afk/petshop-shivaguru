@@ -9,7 +9,7 @@ interface RecentlyViewedState {
   clearHistory: () => void;
 }
 
-const MAX_RECENTLY_VIEWED = 20;
+const MAX_RECENTLY_VIEWED = 12;
 
 export const useRecentlyViewed = create<RecentlyViewedState>()(
   persist(

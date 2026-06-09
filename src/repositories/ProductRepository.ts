@@ -1,24 +1,28 @@
 import { Product } from "@/types/product";
-import { products as siteProducts } from "@/lib/site-data";
+import { products as siteProducts, type Product as SiteProduct } from "@/lib/site-data";
 
-// Map site-data products to our Showcase Product interface
-const MAPPED_PRODUCTS: Product[] = siteProducts.map((p, index) => ({
-  id: p.id,
-  slug: p.id,
-  name: p.name,
-  image: p.image,
-  price: p.price,
-  // Adding mock fields to satisfy the UI since original products lack them
-  compareAtPrice: p.price + (p.price * 0.2), // Mock 20% discount
-  rating: 4.5 + (index % 5) * 0.1, // Mock rating between 4.5 and 4.9
-  reviewCount: 50 + (index * 17) % 200, // Mock reviews
-  stockStatus: "in-stock",
-  brand: p.brand || "Exotic Pets",
-  category: p.category,
-  createdAt: p.createdAt,
-  badge: index % 3 === 0 ? "NEW" : index % 5 === 0 ? "BEST SELLER" : undefined,
-  tags: [p.category, p.age || "", p.brand || ""].filter(Boolean),
-}));
+// Map a single site-data product to our Showcase Product interface
+export function mapSiteProduct(p: SiteProduct, index: number = 0): Product {
+  return {
+    id: p.id,
+    slug: p.id,
+    name: p.name,
+    image: p.image,
+    price: p.price,
+    compareAtPrice: p.price + (p.price * 0.2),
+    rating: 4.5 + (index % 5) * 0.1,
+    reviewCount: 50 + (index * 17) % 200,
+    stockStatus: "in-stock",
+    brand: p.brand || "Exotic Pets",
+    category: p.category,
+    createdAt: p.createdAt,
+    badge: index % 3 === 0 ? "NEW" : index % 5 === 0 ? "BEST SELLER" : undefined,
+    tags: [p.category, p.age || "", p.brand || ""].filter(Boolean),
+  };
+}
+
+// Map all site-data products to our Showcase Product interface
+const MAPPED_PRODUCTS: Product[] = siteProducts.map((p, index) => mapSiteProduct(p, index));
 
 export class ProductRepository {
   /**
