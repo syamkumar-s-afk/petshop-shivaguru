@@ -55,21 +55,21 @@ export function ProductCatalog() {
       </section>
 
       {/* View All in Shop CTA — replaces the old Load More on large catalogs */}
-      <div className="mb-12 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+      <div className="mb-12 flex w-full flex-row items-center justify-center gap-2 px-2 sm:gap-4">
         {displayCount < visibleProducts.length && (
           <button
             onClick={() => setDisplayCount((prev) => prev + 20)}
-            className="rounded-full border-2 border-leaf px-8 py-3 text-sm font-bold text-leaf transition-colors hover:bg-leaf hover:text-white md:text-base"
+            className="flex-1 whitespace-nowrap rounded-full border-2 border-leaf py-3 text-center text-[11px] font-bold text-leaf transition-colors hover:bg-leaf hover:text-white sm:flex-none sm:px-8 sm:text-sm md:text-base"
           >
-            Load More Products
+            Load More
           </button>
         )}
         <Link
           href={shopHref}
-          className="group flex items-center gap-2 rounded-full bg-forest px-8 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-forest/90 hover:shadow-lg active:scale-[0.97] md:text-base"
+          className="group flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-forest py-3 text-[11px] font-bold text-white shadow-md transition-all hover:bg-forest/90 hover:shadow-lg active:scale-[0.97] sm:flex-none sm:px-8 sm:text-sm md:text-base"
         >
-          View All in Shop
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          View in Shop
+          <ArrowRight className="h-3 w-3 shrink-0 transition-transform group-hover:translate-x-0.5 sm:h-4 sm:w-4" />
         </Link>
       </div>
     </>
