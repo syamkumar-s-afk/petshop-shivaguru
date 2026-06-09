@@ -7,47 +7,57 @@ import {
   getFilteredCounts,
   getAvailableBrands,
   getAvailableAges,
-  getAvailableDietary,
-  getContextualFilters,
   PRICE_PRESETS,
 } from "@/lib/filter-utils";
 import { products, categories } from "@/lib/site-data";
 import type { CategoryId } from "@/lib/site-data";
 import { FilterCheckbox } from "@/components/filters/filter-checkbox";
 import { PriceRangeSlider } from "@/components/filters/price-range-slider";
-import { ChevronDown, ChevronUp, X, Search, RotateCcw, SlidersHorizontal } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronUp,
+  X,
+  Search,
+  RotateCcw,
+  SlidersHorizontal,
+  LayoutGrid,
+  Tag,
+  BadgeCheck,
+  PawPrint,
+} from "lucide-react";
 
-/* ─── Accordion Section ─── */
+/* ─── Accordion Section (controlled — only one open at a time) ─── */
 function FilterSection({
   title,
   icon,
-  defaultOpen = true,
+  isOpen,
+  onToggle,
   children,
 }: {
   title: string;
   icon: React.ReactNode;
-  defaultOpen?: boolean;
+  isOpen: boolean;
+  onToggle: () => void;
   children: React.ReactNode;
 }) {
-  const [open, setOpen] = useState(defaultOpen);
   return (
     <div className="border-b border-gray-100 last:border-b-0">
       <button
         type="button"
-        onClick={() => setOpen((o) => !o)}
+        onClick={onToggle}
         className="flex w-full items-center justify-between px-5 py-3.5 text-left transition-colors hover:bg-gray-50/60"
       >
         <span className="flex items-center gap-2 text-sm font-semibold text-gray-800">
           {icon}
           {title}
         </span>
-        {open ? (
+        {isOpen ? (
           <ChevronUp className="h-4 w-4 text-gray-400" />
         ) : (
           <ChevronDown className="h-4 w-4 text-gray-400" />
         )}
       </button>
-      <div className="filter-accordion-content" data-open={open}>
+      <div className="filter-accordion-content" data-open={isOpen}>
         <div className="filter-accordion-inner">
           <div className="px-5 pb-4">{children}</div>
         </div>
@@ -65,14 +75,12 @@ function FilterPanelContent() {
     selectedBrands,
     brandSearch,
     selectedAges,
-    selectedDietary,
     toggleCategory,
     setPriceRange,
     setPricePreset,
     toggleBrand,
     setBrandSearch,
     toggleAge,
-    toggleDietary,
   } = useFilterStore();
 
   const filterState = useMemo(
@@ -81,18 +89,22 @@ function FilterPanelContent() {
       priceRange,
       selectedBrands,
       selectedAges,
-      selectedDietary,
+      selectedDietary: [],
     }),
-    [selectedCategories, priceRange, selectedBrands, selectedAges, selectedDietary]
+    [selectedCategories, priceRange, selectedBrands, selectedAges]
   );
 
   const counts = useMemo(() => getFilteredCounts(products, filterState), [filterState]);
   const availableBrands = useMemo(() => getAvailableBrands(products), []);
   const availableAges = useMemo(() => getAvailableAges(products), []);
-  const availableDietary = useMemo(() => getAvailableDietary(products), []);
-  const contextual = useMemo(() => getContextualFilters(selectedCategories), [selectedCategories]);
 
   const [showAllBrands, setShowAllBrands] = useState(false);
+
+  /* Exclusive accordion — only one section open at a time */
+  const [openSection, setOpenSection] = useState<string | null>("category");
+  const handleToggle = (section: string) => {
+    setOpenSection((prev) => (prev === section ? null : section));
+  };
 
   const filteredBrands = useMemo(() => {
     let brands = availableBrands;
@@ -114,8 +126,9 @@ function FilterPanelContent() {
       {/* Category Filter */}
       <FilterSection
         title="Category"
-        icon={<span className="text-base">📂</span>}
-        defaultOpen={true}
+        icon={<LayoutGrid className="h-4 w-4 text-forest" />}
+        isOpen={openSection === "category"}
+        onToggle={() => handleToggle("category")}
       >
         <div className="flex flex-col gap-1">
           {displayCategories.map((cat) => {
@@ -137,8 +150,9 @@ function FilterPanelContent() {
       {/* Price Range Filter */}
       <FilterSection
         title="Price Range"
-        icon={<span className="text-base">💰</span>}
-        defaultOpen={true}
+        icon={<Tag className="h-4 w-4 text-forest" />}
+        isOpen={openSection === "price"}
+        onToggle={() => handleToggle("price")}
       >
         <PriceRangeSlider
           min={0}
@@ -153,8 +167,9 @@ function FilterPanelContent() {
       {/* Brand Filter */}
       <FilterSection
         title="Brand"
-        icon={<span className="text-base">🏷️</span>}
-        defaultOpen={true}
+        icon={<BadgeCheck className="h-4 w-4 text-forest" />}
+        isOpen={openSection === "brand"}
+        onToggle={() => handleToggle("brand")}
       >
         {availableBrands.length > 6 && (
           <div className="relative mb-2">
@@ -195,8 +210,9 @@ function FilterPanelContent() {
       {/* Age / Life Stage Filter */}
       <FilterSection
         title="Age / Life Stage"
-        icon={<span className="text-base">🐾</span>}
-        defaultOpen={selectedAges.length > 0}
+        icon={<PawPrint className="h-4 w-4 text-forest" />}
+        isOpen={openSection === "age"}
+        onToggle={() => handleToggle("age")}
       >
         <div className="flex flex-col gap-1">
           {availableAges.map((age) => (
@@ -211,26 +227,6 @@ function FilterPanelContent() {
         </div>
       </FilterSection>
 
-      {/* Dietary Requirements Filter (context-adaptive) */}
-      {contextual.includes("dietary") && availableDietary.length > 0 && (
-        <FilterSection
-          title="Dietary Requirements"
-          icon={<span className="text-base">🥗</span>}
-          defaultOpen={selectedDietary.length > 0}
-        >
-          <div className="flex flex-col gap-1">
-            {availableDietary.map((item) => (
-              <FilterCheckbox
-                key={item.value}
-                label={item.value}
-                checked={selectedDietary.includes(item.value)}
-                count={counts.dietary.get(item.value) ?? 0}
-                onChange={() => toggleDietary(item.value)}
-              />
-            ))}
-          </div>
-        </FilterSection>
-      )}
     </div>
   );
 }
