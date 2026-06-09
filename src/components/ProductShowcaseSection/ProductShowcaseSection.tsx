@@ -46,7 +46,7 @@ export function ProductShowcaseSection({
   ) : null;
 
   return (
-    <section className={`py-6 md:py-10 ${getBackgroundClass()}`}>
+    <section className={`py-4 md:py-10 ${getBackgroundClass()}`}>
       <div className="container mx-auto px-4 md:px-8 max-w-[1400px]">
         <ProductCarousel
           title={title}
@@ -67,20 +67,7 @@ export function ProductShowcaseSection({
                 />
               ))}
         </ProductCarousel>
-        
-        {/* Mobile View All Button */}
-        {viewAllHref && (
-          <div className="mt-8 flex justify-center md:hidden">
-            <Link
-              href={viewAllHref}
-              onClick={() => trackViewAllClick(variant)}
-              className="flex items-center justify-center w-full max-w-xs gap-2 py-3 px-6 text-sm font-semibold border-2 border-neutral-200 rounded-full text-neutral-800 hover:bg-neutral-50 transition-colors"
-            >
-              View All Products
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        )}
+
       </div>
     </section>
   );

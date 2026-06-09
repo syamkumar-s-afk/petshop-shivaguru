@@ -78,7 +78,7 @@ export function ProductCarousel({ children, headerRight, title, subtitle }: Prod
       <div className="relative group">
         <div
           ref={scrollContainerRef}
-          className="flex gap-3 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 md:pb-8 pt-2 px-1 lg:px-0 no-scrollbar"
+          className="flex gap-3 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-3 md:pb-8 pt-2 px-1 lg:px-0 no-scrollbar"
           style={{ scrollBehavior: "smooth" }}
           role="region"
           aria-label={`${title} carousel`}

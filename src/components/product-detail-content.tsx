@@ -32,6 +32,7 @@ import { ProductCard } from "@/components/product-card";
 import { addToCart } from "@/lib/cart-store";
 import { useRecentlyViewed } from "@/hooks/useRecentlyViewed";
 import { mapSiteProduct } from "@/repositories/ProductRepository";
+import { ProductShowcaseSection } from "@/components/ProductShowcaseSection";
 
 type ProductDetailContentProps = {
   product: Product;
@@ -229,6 +230,12 @@ export function ProductDetailContent({ product, relatedProducts }: ProductDetail
   const qualityBadges = productQualityBadges(product);
   const careProfile = productCareProfile(product);
   const addRecentlyViewed = useRecentlyViewed((s) => s.addProduct);
+  const recentlyViewed = useRecentlyViewed((s) => s.viewedProducts);
+
+  // Filter out the current product from recently viewed
+  const recentlyViewedFiltered = useMemo(() => {
+    return recentlyViewed.filter((p) => p.id !== product.id);
+  }, [recentlyViewed, product.id]);
 
   // Track this product as recently viewed
   useEffect(() => {
@@ -557,21 +564,30 @@ export function ProductDetailContent({ product, relatedProducts }: ProductDetail
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
-        <div className="mt-12 md:mt-20 border-t border-gray-100 pt-10 md:pt-16">
-          <div className="mb-6 md:mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-2">
-            <div>
-              <span className="bg-leaf/10 text-leaf border border-leaf/20 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
-                Recommended
-              </span>
-              <h2 className="mt-2 text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">Customers Also Viewed</h2>
-            </div>
-            <p className="text-xs md:text-sm text-gray-500 font-medium">Selected premium collections tailored to your preference</p>
+        <div className="mt-10 md:mt-16 border-t border-gray-100 pt-8 md:pt-12">
+          <div className="mb-5 md:mb-8">
+            <h2 className="text-xl font-bold tracking-tight text-gray-900 md:text-2xl">Related Products</h2>
+            <p className="mt-1 text-xs md:text-sm text-gray-500">You might also like these</p>
           </div>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
             {relatedProducts.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Recently Viewed Products */}
+      {recentlyViewedFiltered.length > 0 && (
+        <div className="mt-10 md:mt-16 border-t border-gray-100 pt-2 md:pt-4">
+          <ProductShowcaseSection
+            title="Recently Viewed"
+            subtitle="Pick up where you left off."
+            variant="recently-viewed"
+            products={recentlyViewedFiltered}
+            backgroundVariant="neutral"
+            maxItems={12}
+          />
         </div>
       )}
     </>
