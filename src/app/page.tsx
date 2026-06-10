@@ -7,6 +7,7 @@ import { Testimonial } from "@/components/testimonial";
 import { Faq } from "@/components/faq";
 import { Gallery } from "@/components/gallery";
 import { ShowcaseSectionsDemo } from "@/components/ShowcaseSectionsDemo";
+import { BrandsMarquee } from "@/components/brands-marquee";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
         <ShowcaseSectionsDemo />
         <Testimonial />
         <Gallery />
+        <BrandsMarquee />
         <Location />
         <Faq />
         <CtaBanner />

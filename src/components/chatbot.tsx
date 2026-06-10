@@ -22,6 +22,7 @@ import {
   Bone,
 } from "lucide-react";
 import { products, productWhatsappHref, site, CategoryId } from "@/lib/site-data";
+import { chatbotEngine } from "@/services/chatbot-engine";
 
 // Premium Custom Web Audio API Bird Chirp Sound
 const playBirdChirp = () => {
@@ -189,6 +190,8 @@ export function Chatbot() {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [widgetAvatarSrc, setWidgetAvatarSrc] = useState("/images/macaw_avatar.png");
   const [lastDiscussedProduct, setLastDiscussedProduct] = useState<typeof products[0] | null>(null);
+  const [pendingQuestion, setPendingQuestion] = useState<string | null>(null);
+  const [lastCategory, setLastCategory] = useState<CategoryId | null>(null);
 
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -362,12 +365,15 @@ export function Chatbot() {
     if (soundEnabled) playBirdChirp();
 
     setTimeout(() => {
-      const response = generatePollyReply(textToSend);
+      const response = chatbotEngine.processMessage(textToSend, {
+        lastDiscussedProduct,
+        pendingQuestion,
+        lastCategory
+      });
       
-      // Context memory mapping
-      if (response.products && response.products.length === 1) {
-        setLastDiscussedProduct(response.products[0]);
-      }
+      setLastDiscussedProduct(response.newContext.lastDiscussedProduct);
+      setPendingQuestion(response.newContext.pendingQuestion);
+      setLastCategory(response.newContext.lastCategory);
       
       const pollyMsg: Message = {
         id: Math.random().toString(36).substring(7),
@@ -375,7 +381,7 @@ export function Chatbot() {
         text: response.text,
         timestamp: new Date(),
         products: response.products,
-        actions: response.actions,
+        actions: response.actions as any,
       };
 
       const finalMessages = [...updated, pollyMsg];
@@ -389,314 +395,33 @@ export function Chatbot() {
     }, 1200);
   };
 
-  // Simple clean NLP matching engine
-  const generatePollyReply = (query: string): { text: string; products?: typeof products; actions?: any[] } => {
-    const q = query.toLowerCase().trim();
-
-    // Enterprise Context-Aware Follow-Up logic
-    if (lastDiscussedProduct) {
-      if (/price|cost|how much|rate/i.test(q)) {
-        return {
-          text: `Squawk! The price of the **${lastDiscussedProduct.name}** is **₹${lastDiscussedProduct.price.toLocaleString("en-IN")}**! Squaawk! I can provide a direct WhatsApp ordering link, chirp!`,
-          actions: [
-            { label: `Order ${lastDiscussedProduct.name} 📞`, actionKey: "whatsapp_direct", isWhatsApp: true },
-            { label: "Other features 💡", actionKey: "context_features" }
-          ]
-        };
-      }
-      if (/about|detail|desc|info|what is it|tell me more/i.test(q)) {
-        return {
-          text: `Squawk! Here is what Polly knows about the **${lastDiscussedProduct.name}**:\n\n${lastDiscussedProduct.about}\n\nChirp chirp! It is an amazing choice!`,
-          actions: [{ label: `Enquire on WhatsApp 📞`, actionKey: "whatsapp_direct", isWhatsApp: true }]
-        };
-      }
-      if (/diet|food|eat|requirement/i.test(q)) {
-        const dietInfo = lastDiscussedProduct.dietaryRequirements || "seeds, fresh fruits, and high-protein pet feed";
-        return {
-          text: `Squawk! For the **${lastDiscussedProduct.name}**, the dietary focus is **${dietInfo}**! Always remember to keep fresh water nearby! Chirp!`,
-        };
-      }
-      if (/age|baby|adult/i.test(q)) {
-        const ageInfo = lastDiscussedProduct.age || "various growth stages";
-        return {
-          text: `Squawk! Our current **${lastDiscussedProduct.name}** in stock is a **${ageInfo}**! Extremely energetic and healthy! Squawk!`,
-        };
-      }
-      if (q === "context_features" || /feature|key|special|condition/i.test(q)) {
-        const features = lastDiscussedProduct.keyFeatures.map(f => `- ${f}`).join("\n");
-        return {
-          text: `Squawk! Here are the key features of the **${lastDiscussedProduct.name}**, chirp:\n\n${features}`,
-        };
-      }
-    }
-
-    // Check pre-defined keys
-    if (q === "show_birds") {
-      const filtered = products.filter(p => p.category === "birds");
-      return {
-        text: "Squawk! Beautiful choice! We have the most intelligent and colorful feathered companions. Check these out, chirp!",
-        products: filtered,
-        actions: [{ label: "Enquire on WhatsApp 🦜", actionKey: "whatsapp_direct", isWhatsApp: true }],
-      };
-    }
-    if (q === "show_puppies") {
-      const filtered = products.filter(p => p.category === "puppies");
-      return {
-        text: "Squawk! Puppies! Super healthy, active, fully vaccinated purebred bundles of joy! Check them out, chirp!",
-        products: filtered,
-        actions: [{ label: "Enquire on WhatsApp 🐶", actionKey: "whatsapp_direct", isWhatsApp: true }],
-      };
-    }
-    if (q === "show_aquarium") {
-      const filtered = products.filter(p => p.category === "aquarium");
-      return {
-        text: "Squaaawk! Glug glug! Beautiful, peaceful freshwater fishes to turn your aquarium into a stunning aquatic paradise! Chirp!",
-        products: filtered,
-        actions: [{ label: "Tank Maintenance Info 🐠", actionKey: "services_tank" }],
-      };
-    }
-    if (q === "show_food") {
-      const filtered = products.filter(p => p.category === "food");
-      return {
-        text: "Squawk! Yummy! Polly loves seeds, but for puppies and cats we supply super premium brands like **Drools**, **Pedigree**, and **Ninja**! High protein and grain-free formulas! Chirp!",
-        products: filtered,
-      };
-    }
-    if (q === "show_supplements") {
-      const filtered = products.filter(p => p.category === "supplements");
-      return {
-        text: "Squawk! Health is wealth! We have top quality veterinarian-recommended syrups and calcium tablets to keep your pets strong! Chirp!",
-        products: filtered,
-      };
-    }
-    if (q === "faq_delivery") {
-      return {
-        text: "Squawk! Delivery details, coming up! 📦 Yes, we provide home delivery for pet foods and accessories inside Pollachi city limits. For long distances or outside city lines, delivery charges are based on km. Reach out on WhatsApp for quotes! Chirp!",
-        actions: [{ label: "Order on WhatsApp 📞", actionKey: "whatsapp_direct", isWhatsApp: true }],
-      };
-    }
-    if (q === "whatsapp_direct") {
-      return {
-        text: "Squawk! Let's get you connected directly with our human managers! Standard response time is less than 5 minutes! Chirp chirp!",
-        actions: [{ label: "Chat on WhatsApp 💬", actionKey: "whatsapp_direct", isWhatsApp: true }],
-      };
-    }
-    if (q === "services_tank") {
-      return {
-        text: "Squawk! Need professional tank setup or maintenance? 🐠 Our experts handle deep water cleaning, filter installations, and aqua-scaping! Chirp!",
-        actions: [{ label: "Book Maintenance 🛠️", actionKey: "whatsapp_tank_link", isWhatsApp: true }],
-      };
-    }
-
-    // Casual Greetings / Simple Bot Queries
-    if (/^(hi|hello|hey|greetings|yaw|halo)/i.test(q)) {
-      return {
-        text: "Squawk! Hello there, human friend! 🦜 Polly is super excited to chat! What can I help you find in our exotic pet kingdom? Puppies, birds, accessories, or premium supplements?",
-        actions: [
-          { label: "Show Birds 🦜", actionKey: "show_birds" },
-          { label: "Show Puppies 🐶", actionKey: "show_puppies" },
-          { label: "Ask FAQ 💡", actionKey: "faq_list" },
-        ],
-      };
-    }
-
-    if (/^(thank|thanks|great|cool|awesome|perfect)/i.test(q)) {
-      return {
-        text: "Squaaawk! You are very welcome! Polly fluffs his feathers in happiness! Let me know if you want to see more products or have care questions! Chirp!",
-      };
-    }
-
-    if (/^(bye|goodbye|see you|exit)/i.test(q)) {
-      return {
-        text: "Squawk! Goodbye, friend! Fly safe and come back to Exotic Pets World soon! Squaaawk!",
-      };
-    }
-
-    if (/^(who are you|your name|polly|parrot|macaw)/i.test(q)) {
-      return {
-        text: "Squawk! I am Polly! 🦜 A highly intelligent Blue & Gold Macaw. I work as the chief customer assistant here, finding premium food, pets, and advice. Squaawk! I can learn 100+ pet products!",
-      };
-    }
-
-    // FAQ matching
-    if (/deliver|delivery|shipping|send|post|courier/i.test(q)) {
-      return {
-        text: "Squawk! 📦 Delivery details: Yes! We provide home delivery for pet food and accessories within Pollachi city limits. For orders outside the city, delivery charges apply based on distance.",
-        actions: [{ label: "Request Home Delivery 📞", actionKey: "whatsapp_direct", isWhatsApp: true }],
-      };
-    }
-
-    if (/vaccin|vax|injection|deworm|health|certificate/i.test(q)) {
-      return {
-        text: "Squaaawk! Healthy and vaccinated! 💉 All our puppies and kittens come with their first round of vaccinations completed, dewormed, and with an official certified health record card!",
-        actions: [{ label: "Enquire about Puppies 🐶", actionKey: "show_puppies" }],
-      };
-    }
-
-    if (/preorder|pre-order|import|special order|breed request/i.test(q)) {
-      return {
-        text: "Squawk! Special requests? Yes! If you are looking for a specific exotic bird, fish, or puppy breed, we can arrange it! Please visit our shop or contact us on WhatsApp to discuss pre-orders. Squaawk!",
-        actions: [{ label: "Contact for Pre-order 📞", actionKey: "whatsapp_direct", isWhatsApp: true }],
-      };
-    }
-
-    if (/hour|time|open|close|sunday|saturday/i.test(q)) {
-      return {
-        text: "Squawk! We are open every single day (Monday to Sunday) from **10:00 AM to 8:30 PM**. Drop by our physical store to say hello to our real birds! Chirp!",
-      };
-    }
-
-    if (/address|location|where|place|map|shop/i.test(q)) {
-      return {
-        text: "Squawk! Fly over to our shop! 🗺️ We are located at:\n**Kannaki Street, Mahalingapuram, Pollachi**.\nDrop by to see our magnificent aquarium collections and pet supplies! Squaawk!",
-      };
-    }
-
-    if (/consult|doctor|groom|spa|care advice/i.test(q)) {
-      return {
-        text: "Squawk! 🏥 We offer full Pet Consultations, Grooming & Spa services, and expert Pet Care Advice! Reach our expert teams on WhatsApp instantly!",
-        actions: [
-          { label: "Grooming & Spa ✂️", actionKey: "whatsapp_grooming", isWhatsApp: true },
-          { label: "Pet Consultation 🩺", actionKey: "whatsapp_consult", isWhatsApp: true },
-        ],
-      };
-    }
-
-    // Categories matching
-    if (/bird|parrot|macaw|lovebird|budgerigar/i.test(q)) {
-      const filtered = products.filter(p => p.category === "birds");
-      return {
-        text: "Squawk! Flapping wings! Here are the birds currently in our collection. They are highly intelligent, playful, and hand-tamed, chirp!",
-        products: filtered,
-      };
-    }
-
-    if (/dog|puppy|puppies|golden|retriever|gsd|german|labrador|sausage|dachshund/i.test(q)) {
-      const filtered = products.filter(p => p.category === "puppies");
-      return {
-        text: "Squawk! Wiggle tails! Here are our healthy, active puppies ready for their forever homes. Chirp chirp!",
-        products: filtered,
-      };
-    }
-
-    if (/fish|aquarium|tetra|neon|angelfish|tank|pond/i.test(q)) {
-      const filtered = products.filter(p => p.category === "aquarium");
-      return {
-        text: "Squawk! Splash! Look at our elegant aquarium swimmers. Excellent community fish! Glug glug!",
-        products: filtered,
-      };
-    }
-
-    if (/food|feed|drools|pedigree|ninja|whiskas|cat food|dog food|millet|seed/i.test(q)) {
-      const filtered = products.filter(p => p.category === "food");
-      return {
-        text: "Squawk! Crunch crunch! Highly nutritious premium meals loaded with proteins, DHA, and essential minerals for healthy pets. Chirp!",
-        products: filtered,
-      };
-    }
-
-    if (/supplement|calcium|multivitamin|syrup|tablet|himalaya|nutripet|medicine|vitamins/i.test(q)) {
-      const filtered = products.filter(p => p.category === "supplements");
-      return {
-        text: "Squawk! Stay healthy! Super charge your pet's bones, joints, and immunity with our premium syrups and tablets. Recommended by vets! Chirp!",
-        products: filtered,
-      };
-    }
-
-    if (/collar|belt|rope|toy|accessories|play stand|cage/i.test(q)) {
-      const filtered = products.filter(p => p.category === "accessories");
-      return {
-        text: "Squawk! Stylish and durable collars, ropes, and stands! Check these play accessories out, chirp!",
-        products: filtered,
-      };
-    }
-
-    if (/hamster|syrian|small pet|rodent/i.test(q)) {
-      const filtered = products.filter(p => p.category === "small-pets");
-      return {
-        text: "Squawk! Squeak squeak! Look at our cute little Syrian Hamsters! Extremely playful, solitary, and perfect first-time pets. Chirp!",
-        products: filtered,
-      };
-    }
-
-    // Fuzzy Relevance Weighted Search Logic
-    const tokens = q.split(/\s+/).filter(t => t.length > 2);
-    let searchMatches: Array<{ product: typeof products[0]; score: number }> = [];
-
-    if (tokens.length > 0) {
-      products.forEach(p => {
-        let score = 0;
-        const nameL = p.name.toLowerCase();
-        const descL = p.description.toLowerCase();
-        const aboutL = p.about.toLowerCase();
-        const brandL = (p.brand || "").toLowerCase();
-        const catL = p.category.toLowerCase();
-
-        tokens.forEach(token => {
-          if (nameL.includes(token)) score += 12;
-          if (catL.includes(token)) score += 6;
-          if (brandL.includes(token)) score += 6;
-          if (descL.includes(token)) score += 3;
-          if (aboutL.includes(token)) score += 1;
-        });
-
-        if (score > 0) {
-          searchMatches.push({ product: p, score });
-        }
-      });
-    }
-
-    // Sort by relevance score descending
-    searchMatches.sort((a, b) => b.score - a.score);
-    const directMatches = searchMatches.map(m => m.product);
-
-    if (directMatches.length > 0) {
-      return {
-        text: `Squawk! I found ${directMatches.length} matching pet items in our exotic archives! Take a look, chirp!`,
-        products: directMatches,
-      };
-    }
-
-    // Default Fallback
-    return {
-      text: "Squawk! Polly is thinking... 🦜 I couldn't quite map that to our catalog, chirp! But here is a quick directory of what Polly knows best. Try clicking one, or ask me: 'do you deliver?' or 'show puppies'!",
-      actions: [
-        { label: "Show Birds 🦜", actionKey: "show_birds" },
-        { label: "Show Puppies 🐶", actionKey: "show_puppies" },
-        { label: "Premium Pet Food 🍖", actionKey: "show_food" },
-        { label: "Home Delivery 📦", actionKey: "faq_delivery" },
-        { label: "WhatsApp Chat 📞", actionKey: "whatsapp_direct", isWhatsApp: true },
-      ],
-    };
-  };
-
   const handleActionClick = (action: any) => {
     if (action.isWhatsApp) {
-      // Direct WhatsApp redirect based on action key
       let href = site.whatsappHref;
-      if (action.actionKey === "whatsapp_grooming") {
-        href = "https://wa.me/919942919000?text=Hi%20Exotic%20Pets%20World%20Pollachi%2C%20I%20would%20like%20to%20book%20Grooming%20%26%20Spa.";
-      } else if (action.actionKey === "whatsapp_consult") {
-        href = "https://wa.me/919942919000?text=Hi%20Exotic%20Pets%20World%20Pollachi%2C%20I%20would%20like%20to%20enquire%20about%20Pet%20Consultation.";
-      } else if (action.actionKey === "whatsapp_tank_link") {
-        href = "https://wa.me/919942919000?text=Hi%20Exotic%20Pets%20World%20Pollachi%2C%20I%20would%20like%20to%20enquire%20about%20Tank%20Maintenance.";
-      }
+      if (action.actionKey === "whatsapp_grooming") href = "https://wa.me/919942919000?text=Hi%20Exotic%20Pets%20World%20Pollachi%2C%20I%20would%20like%20to%20book%20Grooming%20%26%20Spa.";
+      else if (action.actionKey === "whatsapp_consult") href = "https://wa.me/919942919000?text=Hi%20Exotic%20Pets%20World%20Pollachi%2C%20I%20would%20like%20to%20enquire%20about%20Pet%20Consultation.";
+      else if (action.actionKey === "whatsapp_tank_link") href = "https://wa.me/919942919000?text=Hi%20Exotic%20Pets%20World%20Pollachi%2C%20I%20would%20like%20to%20enquire%20about%20Tank%20Maintenance.";
       window.open(href, "_blank");
       return;
     }
+    if (action.link) {
+      window.location.href = action.link;
+      return;
+    }
 
-    // Feed the option key as query
     handleSend(action.label);
     
-    // Convert option click directly into Polly action response
     setIsTyping(true);
     setTimeout(() => {
-      const response = generatePollyReply(action.actionKey);
+      const response = chatbotEngine.processMessage(action.actionKey || action.label, {
+        lastDiscussedProduct,
+        pendingQuestion,
+        lastCategory
+      });
       
-      // Context tracking on options select
-      if (response.products && response.products.length === 1) {
-        setLastDiscussedProduct(response.products[0]);
-      }
+      setLastDiscussedProduct(response.newContext.lastDiscussedProduct);
+      setPendingQuestion(response.newContext.pendingQuestion);
+      setLastCategory(response.newContext.lastCategory);
       
       const pollyMsg: Message = {
         id: Math.random().toString(36).substring(7),
@@ -704,7 +429,7 @@ export function Chatbot() {
         text: response.text,
         timestamp: new Date(),
         products: response.products,
-        actions: response.actions,
+        actions: response.actions as any,
       };
       
       setMessages(prev => {
@@ -718,7 +443,6 @@ export function Chatbot() {
       }
     }, 900);
   };
-
   const resetChat = () => {
     if (confirm("Reset conversation with Polly?")) {
       sessionStorage.removeItem("polly_chat_history");
